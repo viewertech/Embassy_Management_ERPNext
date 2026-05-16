@@ -1,0 +1,18 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<main class="ems-public" style="--ems-primary: {{ brand.primary_colour }}; --ems-secondary: {{ brand.secondary_colour }};">
+  <section class="ems-hero">
+    <div>
+      <p class="ems-kicker">{{ _("Consular Portal") }}</p>
+      <h1>{{ brand.mission_name }}</h1>
+      <p>{{ _("Start applications, check requirements, manage appointments, and track consular cases securely.") }}</p>
+      <div class="ems-actions">
+        <a class="btn btn-primary" href="/embassy/apply">{{ _("Start Application") }}</a>
+        <a class="btn btn-outline-primary" href="/embassy/requirements">{{ _("Check Requirements") }}</a>
+      </div>
+    </div>
+  </section>
+  <section class="ems-service-grid" id="ems-services"></section>
+  {% include "embassy_management/templates/includes/viewertech_footer.html" %}
+</main>
+{% endblock %}

@@ -1,0 +1,143 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "service",
+    "appointment_service_type",
+    "location",
+    "officer",
+    "slot_date",
+    "from_time",
+    "to_time",
+    "capacity",
+    "booked_count",
+    "active",
+    "exclude_public_holiday"
+  ],
+  "fields": [
+    {
+      "fieldname": "service",
+      "fieldtype": "Link",
+      "label": "Service",
+      "options": "Consular Service"
+    },
+    {
+      "fieldname": "appointment_service_type",
+      "fieldtype": "Link",
+      "label": "Appointment Service Type",
+      "options": "Appointment Service Type"
+    },
+    {
+      "fieldname": "location",
+      "fieldtype": "Link",
+      "label": "Location",
+      "options": "Appointment Location",
+      "reqd": 1
+    },
+    {
+      "fieldname": "officer",
+      "fieldtype": "Link",
+      "label": "Officer",
+      "options": "User"
+    },
+    {
+      "fieldname": "slot_date",
+      "fieldtype": "Date",
+      "label": "Slot Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "from_time",
+      "fieldtype": "Time",
+      "label": "From Time",
+      "reqd": 1
+    },
+    {
+      "fieldname": "to_time",
+      "fieldtype": "Time",
+      "label": "To Time",
+      "reqd": 1
+    },
+    {
+      "fieldname": "capacity",
+      "fieldtype": "Int",
+      "label": "Capacity",
+      "default": 1
+    },
+    {
+      "fieldname": "booked_count",
+      "fieldtype": "Int",
+      "label": "Booked Count",
+      "default": 0,
+      "read_only": 1
+    },
+    {
+      "fieldname": "active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": 1
+    },
+    {
+      "fieldname": "exclude_public_holiday",
+      "fieldtype": "Check",
+      "label": "Exclude Public Holiday",
+      "default": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Appointment Slot",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "search_fields": "service,location,slot_date,from_time"
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Registration Confirmation",
+    "subject": "Registration confirmation",
+    "use_html": 1,
+    "response": "<p>Registration confirmation for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Application Saved",
+    "subject": "Application saved",
+    "use_html": 1,
+    "response": "<p>Application saved for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Application Submitted",
+    "subject": "Application submitted",
+    "use_html": 1,
+    "response": "<p>Application submitted for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Payment Pending",
+    "subject": "Payment pending",
+    "use_html": 1,
+    "response": "<p>Payment pending for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Payment Confirmed",
+    "subject": "Payment confirmed",
+    "use_html": 1,
+    "response": "<p>Payment confirmed for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Appointment Booked",
+    "subject": "Appointment booked",
+    "use_html": 1,
+    "response": "<p>Appointment booked for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Appointment Reminder",
+    "subject": "Appointment reminder",
+    "use_html": 1,
+    "response": "<p>Appointment reminder for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Additional Documents Requested",
+    "subject": "Additional documents requested",
+    "use_html": 1,
+    "response": "<p>Additional documents requested for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Application Approved",
+    "subject": "Application approved",
+    "use_html": 1,
+    "response": "<p>Application approved for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Application Rejected",
+    "subject": "Application rejected",
+    "use_html": 1,
+    "response": "<p>Application rejected for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Collection Ready",
+    "subject": "Collection ready",
+    "use_html": 1,
+    "response": "<p>Collection ready for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "EMS - Dispatch Notification",
+    "subject": "Dispatch notification",
+    "use_html": 1,
+    "response": "<p>Dispatch notification for {{ doc.application_number or doc.name }}.</p><p>Powered by <a href='https://viewertech.net'>Viewertech</a></p>"
+  }
+]

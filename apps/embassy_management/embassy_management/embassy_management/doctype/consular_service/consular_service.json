@@ -1,0 +1,251 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "service",
+    "service_name",
+    "service_code",
+    "service_category",
+    "description",
+    "enabled_on_public_portal",
+    "column",
+    "requires_appointment",
+    "requires_online_application",
+    "requires_document_upload",
+    "requires_payment",
+    "requires_officer_review",
+    "requires_biometrics",
+    "requires_interview",
+    "fees_and_validity",
+    "default_processing_time",
+    "fee_item",
+    "default_fee",
+    "currency",
+    "validity_period",
+    "instructions",
+    "service_instructions",
+    "eligibility_rules",
+    "required_documents",
+    "workflow",
+    "print_format",
+    "email_template",
+    "terms_and_declaration"
+  ],
+  "fields": [
+    {
+      "fieldname": "service",
+      "fieldtype": "Section Break",
+      "label": "Service"
+    },
+    {
+      "fieldname": "service_name",
+      "fieldtype": "Data",
+      "label": "Service Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "service_code",
+      "fieldtype": "Data",
+      "label": "Service Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "service_category",
+      "fieldtype": "Select",
+      "label": "Service Category",
+      "options": "Visa\nPassport\nConsular Card\nAttestation\nLegalisation\nCivil Registry\nEmergency Travel Document\nOther",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description"
+    },
+    {
+      "fieldname": "enabled_on_public_portal",
+      "fieldtype": "Check",
+      "label": "Enabled on Public Portal",
+      "default": 1
+    },
+    {
+      "fieldname": "column",
+      "fieldtype": "Column Break",
+      "label": "Column"
+    },
+    {
+      "fieldname": "requires_appointment",
+      "fieldtype": "Check",
+      "label": "Requires Appointment"
+    },
+    {
+      "fieldname": "requires_online_application",
+      "fieldtype": "Check",
+      "label": "Requires Online Application",
+      "default": 1
+    },
+    {
+      "fieldname": "requires_document_upload",
+      "fieldtype": "Check",
+      "label": "Requires Document Upload",
+      "default": 1
+    },
+    {
+      "fieldname": "requires_payment",
+      "fieldtype": "Check",
+      "label": "Requires Payment",
+      "default": 1
+    },
+    {
+      "fieldname": "requires_officer_review",
+      "fieldtype": "Check",
+      "label": "Requires Officer Review",
+      "default": 1
+    },
+    {
+      "fieldname": "requires_biometrics",
+      "fieldtype": "Check",
+      "label": "Requires Biometrics"
+    },
+    {
+      "fieldname": "requires_interview",
+      "fieldtype": "Check",
+      "label": "Requires Interview"
+    },
+    {
+      "fieldname": "fees_and_validity",
+      "fieldtype": "Section Break",
+      "label": "Fees and Validity"
+    },
+    {
+      "fieldname": "default_processing_time",
+      "fieldtype": "Data",
+      "label": "Default Processing Time"
+    },
+    {
+      "fieldname": "fee_item",
+      "fieldtype": "Link",
+      "label": "Fee Item",
+      "options": "Item"
+    },
+    {
+      "fieldname": "default_fee",
+      "fieldtype": "Currency",
+      "label": "Default Fee",
+      "options": "currency"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency"
+    },
+    {
+      "fieldname": "validity_period",
+      "fieldtype": "Data",
+      "label": "Validity Period"
+    },
+    {
+      "fieldname": "instructions",
+      "fieldtype": "Section Break",
+      "label": "Instructions"
+    },
+    {
+      "fieldname": "service_instructions",
+      "fieldtype": "Text Editor",
+      "label": "Service Instructions"
+    },
+    {
+      "fieldname": "eligibility_rules",
+      "fieldtype": "Text Editor",
+      "label": "Eligibility Rules"
+    },
+    {
+      "fieldname": "required_documents",
+      "fieldtype": "Table",
+      "label": "Required Documents",
+      "options": "Consular Service Document Requirement"
+    },
+    {
+      "fieldname": "workflow",
+      "fieldtype": "Link",
+      "label": "Workflow",
+      "options": "Workflow"
+    },
+    {
+      "fieldname": "print_format",
+      "fieldtype": "Link",
+      "label": "Print Format",
+      "options": "Print Format"
+    },
+    {
+      "fieldname": "email_template",
+      "fieldtype": "Link",
+      "label": "Email Template",
+      "options": "Email Template"
+    },
+    {
+      "fieldname": "terms_and_declaration",
+      "fieldtype": "Text Editor",
+      "label": "Terms and Declaration"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Consular Service",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "autoname": "field:service_code",
+  "title_field": "service_name",
+  "search_fields": "service_name,service_code,service_category"
+}

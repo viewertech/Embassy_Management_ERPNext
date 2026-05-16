@@ -1,0 +1,112 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "template",
+    "section_key",
+    "title",
+    "sequence",
+    "icon",
+    "standard_section",
+    "help_text"
+  ],
+  "fields": [
+    {
+      "fieldname": "template",
+      "fieldtype": "Link",
+      "label": "Template",
+      "options": "Application Form Template",
+      "reqd": 1
+    },
+    {
+      "fieldname": "section_key",
+      "fieldtype": "Data",
+      "label": "Section Key",
+      "reqd": 1
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "sequence",
+      "fieldtype": "Int",
+      "label": "Sequence",
+      "default": 1
+    },
+    {
+      "fieldname": "icon",
+      "fieldtype": "Data",
+      "label": "Icon"
+    },
+    {
+      "fieldname": "standard_section",
+      "fieldtype": "Check",
+      "label": "Standard Section"
+    },
+    {
+      "fieldname": "help_text",
+      "fieldtype": "Text Editor",
+      "label": "Help Text"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Application Form Section",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "title",
+  "search_fields": "title,section_key,template"
+}

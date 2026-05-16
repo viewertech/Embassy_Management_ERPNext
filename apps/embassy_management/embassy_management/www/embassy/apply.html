@@ -1,0 +1,23 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<main class="ems-public ems-page" style="--ems-primary: {{ brand.primary_colour }}; --ems-secondary: {{ brand.secondary_colour }};">
+  <header class="ems-page-header">
+    <p class="ems-kicker">{{ _("Consular Portal") }}</p>
+    <h1>{{ _("Online Application") }}</h1>
+  </header>
+  <section class="ems-app-shell" data-ems-page="apply">
+    <div class="ems-stepper" aria-label="Application sections">
+      <span class="is-active">1. {{ _("Booking") }}</span>
+      <span>2. {{ _("Personal") }}</span>
+      <span>3. {{ _("Contacts") }}</span>
+      <span>4. {{ _("Passport") }}</span>
+      <span>5. {{ _("Travel") }}</span>
+      <span>6. {{ _("Documents") }}</span>
+      <span>7. {{ _("Review") }}</span>
+    </div>
+    <div class="ems-progress"><span style="width: 14%;"></span></div>
+    <div id="ems-root" class="ems-panel"></div>
+  </section>
+  {% include "embassy_management/templates/includes/viewertech_footer.html" %}
+</main>
+{% endblock %}

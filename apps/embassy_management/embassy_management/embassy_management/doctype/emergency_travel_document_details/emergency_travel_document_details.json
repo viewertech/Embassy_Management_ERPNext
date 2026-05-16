@@ -1,0 +1,163 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "consular_application",
+    "reason",
+    "destination_country",
+    "travel_date",
+    "police_report",
+    "valid_until"
+  ],
+  "fields": [
+    {
+      "fieldname": "consular_application",
+      "fieldtype": "Link",
+      "label": "Consular Application",
+      "options": "Consular Application",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "reason",
+      "fieldtype": "Select",
+      "label": "Reason",
+      "options": "Lost Passport\nExpired Passport\nEmergency Repatriation\nOther"
+    },
+    {
+      "fieldname": "destination_country",
+      "fieldtype": "Link",
+      "label": "Destination Country",
+      "options": "Country"
+    },
+    {
+      "fieldname": "travel_date",
+      "fieldtype": "Date",
+      "label": "Travel Date"
+    },
+    {
+      "fieldname": "police_report",
+      "fieldtype": "Link",
+      "label": "Police Report",
+      "options": "File"
+    },
+    {
+      "fieldname": "valid_until",
+      "fieldtype": "Date",
+      "label": "Valid Until"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Emergency Travel Document Details",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Consular Section",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Mission",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Visa Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Passport Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Appointment Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Cashier / Finance Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Applicant",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

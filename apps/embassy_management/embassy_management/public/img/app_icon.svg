@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Embassy Management EMS icon">
+  <defs>
+    <linearGradient id="g" x1="80" y1="60" x2="430" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#144870"/>
+      <stop offset="1" stop-color="#0f2a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#g)"/>
+  <circle cx="256" cy="224" r="126" fill="none" stroke="#e6b654" stroke-width="18"/>
+  <path d="M130 224h252M256 98c38 34 58 76 58 126s-20 92-58 126M256 98c-38 34-58 76-58 126s20 92 58 126M154 174h204M154 274h204" fill="none" stroke="#e6b654" stroke-width="12" stroke-linecap="round"/>
+  <path d="M156 386h200M178 350h156M200 212h112v138H200zM184 212l72-54 72 54" fill="none" stroke="#f6f8fa" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="256" y="444" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="54" fill="#fff">EMS</text>
+</svg>

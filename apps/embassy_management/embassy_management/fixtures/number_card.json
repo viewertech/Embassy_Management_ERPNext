@@ -1,0 +1,52 @@
+[
+  {
+    "doctype": "Number Card",
+    "name": "EMS - Total applications today",
+    "label": "Total applications today",
+    "document_type": "Consular Application",
+    "function": "Count",
+    "is_public": 1,
+    "filters_json": "[[\"creation\", \"Timespan\", \"today\"]]",
+    "module": "Embassy Management"
+  },
+  {
+    "doctype": "Number Card",
+    "name": "EMS - Pending review",
+    "label": "Pending review",
+    "document_type": "Consular Application",
+    "function": "Count",
+    "is_public": 1,
+    "filters_json": "[[\"application_status\", \"in\", [\"Under Initial Review\", \"Under Officer Review\"]]]",
+    "module": "Embassy Management"
+  },
+  {
+    "doctype": "Number Card",
+    "name": "EMS - Pending payments",
+    "label": "Pending payments",
+    "document_type": "Consular Application",
+    "function": "Count",
+    "is_public": 1,
+    "filters_json": "[[\"payment_status\", \"in\", [\"Payment Pending\", \"Payment Under Review\"]]]",
+    "module": "Embassy Management"
+  },
+  {
+    "doctype": "Number Card",
+    "name": "EMS - Appointments today",
+    "label": "Appointments today",
+    "document_type": "Embassy Appointment",
+    "function": "Count",
+    "is_public": 1,
+    "filters_json": "[[\"appointment_date\", \"Timespan\", \"today\"]]",
+    "module": "Embassy Management"
+  },
+  {
+    "doctype": "Number Card",
+    "name": "EMS - Urgent cases",
+    "label": "Urgent cases",
+    "document_type": "Consular Application",
+    "function": "Count",
+    "is_public": 1,
+    "filters_json": "[[\"priority\", \"in\", [\"Urgent\", \"Emergency\"]]]",
+    "module": "Embassy Management"
+  }
+]

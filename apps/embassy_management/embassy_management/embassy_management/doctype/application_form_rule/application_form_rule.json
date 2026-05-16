@@ -1,0 +1,166 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "rule_name",
+    "template",
+    "service",
+    "enabled",
+    "priority",
+    "condition",
+    "trigger_field",
+    "operator",
+    "value",
+    "action",
+    "rule_type",
+    "action_target",
+    "action_payload",
+    "notice_title",
+    "notice_message"
+  ],
+  "fields": [
+    {
+      "fieldname": "rule_name",
+      "fieldtype": "Data",
+      "label": "Rule Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "template",
+      "fieldtype": "Link",
+      "label": "Template",
+      "options": "Application Form Template"
+    },
+    {
+      "fieldname": "service",
+      "fieldtype": "Link",
+      "label": "Service",
+      "options": "Consular Service"
+    },
+    {
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "label": "Enabled",
+      "default": 1
+    },
+    {
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "label": "Priority",
+      "default": 100
+    },
+    {
+      "fieldname": "condition",
+      "fieldtype": "Section Break",
+      "label": "Condition"
+    },
+    {
+      "fieldname": "trigger_field",
+      "fieldtype": "Data",
+      "label": "Trigger Field",
+      "reqd": 1
+    },
+    {
+      "fieldname": "operator",
+      "fieldtype": "Select",
+      "label": "Operator",
+      "options": "Equals\nNot Equals\nIn\nNot In\nIs Set\nIs Not Set",
+      "default": "Equals"
+    },
+    {
+      "fieldname": "value",
+      "fieldtype": "Small Text",
+      "label": "Value"
+    },
+    {
+      "fieldname": "action",
+      "fieldtype": "Section Break",
+      "label": "Action"
+    },
+    {
+      "fieldname": "rule_type",
+      "fieldtype": "Select",
+      "label": "Rule Type",
+      "options": "Show/Hide Field\nMake Required\nCalculate Fee\nTrigger Notice\nRequire Document\nRequire Appointment\nRestrict Eligibility",
+      "reqd": 1
+    },
+    {
+      "fieldname": "action_target",
+      "fieldtype": "Data",
+      "label": "Action Target"
+    },
+    {
+      "fieldname": "action_payload",
+      "fieldtype": "Code",
+      "label": "Action Payload",
+      "options": "JSON"
+    },
+    {
+      "fieldname": "notice_title",
+      "fieldtype": "Data",
+      "label": "Notice Title"
+    },
+    {
+      "fieldname": "notice_message",
+      "fieldtype": "Text Editor",
+      "label": "Notice Message"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Application Form Rule",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "rule_name",
+  "search_fields": "rule_name,service,trigger_field,rule_type"
+}

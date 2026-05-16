@@ -1,0 +1,15 @@
+[
+  {
+    "url": "https://github.com/frappe/frappe",
+    "branch": "version-16"
+  },
+  {
+    "url": "https://github.com/frappe/erpnext",
+    "branch": "version-16"
+  },
+  {
+    "url": "https://github.com/viewertech/Embassy_Management_ERPNext",
+    "branch": "main",
+    "subdirectory": "apps/embassy_management"
+  }
+]

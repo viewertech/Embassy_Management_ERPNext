@@ -1,0 +1,49 @@
+[
+  {
+    "doctype": "Workspace",
+    "name": "Embassy Management",
+    "label": "Embassy Management",
+    "title": "Embassy Management",
+    "module": "Embassy Management",
+    "public": 1,
+    "for_user": "",
+    "content": "[{\"type\": \"header\", \"data\": {\"text\": \"Embassy Management\"}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Consular Applications\"}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Officer Workbench\"}}]",
+    "shortcuts": [
+      {
+        "type": "DocType",
+        "label": "Consular Applications",
+        "link_to": "Consular Application"
+      },
+      {
+        "type": "DocType",
+        "label": "Appointments",
+        "link_to": "Embassy Appointment"
+      },
+      {
+        "type": "DocType",
+        "label": "Consular Services",
+        "link_to": "Consular Service"
+      },
+      {
+        "type": "DocType",
+        "label": "Fee Rules",
+        "link_to": "Consular Fee Rule"
+      },
+      {
+        "type": "Page",
+        "label": "Officer Workbench",
+        "link_to": "officer-workbench"
+      },
+      {
+        "type": "Page",
+        "label": "Appointment Calendar",
+        "link_to": "appointment-calendar"
+      },
+      {
+        "type": "Page",
+        "label": "Finance Dashboard",
+        "link_to": "embassy-finance-dashboard"
+      }
+    ]
+  }
+]

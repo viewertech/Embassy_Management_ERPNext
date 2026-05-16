@@ -1,0 +1,30 @@
+{
+  "add_total_row": 1,
+  "creation": "2026-05-16 00:00:00",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "idx": 0,
+  "is_standard": "Yes",
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Pending Document Resubmission",
+  "owner": "Administrator",
+  "prepared_report": 0,
+  "query": "SELECT application as \"Application:Link/Consular Application:180\", requirement_label as \"Requirement:Data:260\", document_category as \"Category:Data:180\" FROM `tabApplication Document Requirement` r WHERE NOT EXISTS (SELECT 1 FROM `tabApplication Uploaded Document` d WHERE d.requirement = r.name AND d.status IN (\"Uploaded\",\"Accepted\"))",
+  "ref_doctype": "Consular Application",
+  "report_name": "Pending Document Resubmission",
+  "report_type": "Query Report",
+  "roles": [
+    {
+      "role": "Embassy Administrator"
+    },
+    {
+      "role": "Consular Supervisor"
+    },
+    {
+      "role": "Head of Mission"
+    }
+  ]
+}

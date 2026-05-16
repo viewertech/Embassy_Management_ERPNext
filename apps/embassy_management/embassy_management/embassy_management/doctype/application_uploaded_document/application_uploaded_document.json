@@ -1,0 +1,202 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "application",
+    "requirement",
+    "document_category",
+    "file",
+    "uploaded_by",
+    "status",
+    "review_notes",
+    "reviewed_by",
+    "reviewed_on",
+    "reupload_requested",
+    "review_log"
+  ],
+  "fields": [
+    {
+      "fieldname": "application",
+      "fieldtype": "Link",
+      "label": "Application",
+      "options": "Consular Application",
+      "reqd": 1
+    },
+    {
+      "fieldname": "requirement",
+      "fieldtype": "Link",
+      "label": "Requirement",
+      "options": "Application Document Requirement"
+    },
+    {
+      "fieldname": "document_category",
+      "fieldtype": "Select",
+      "label": "Document Category",
+      "options": "Photo\nPassport\nProof of Address\nEmployment Letter\nInvitation Letter\nFlight Ticket\nYellow Fever Certificate\nSignature\nOther Documents",
+      "reqd": 1
+    },
+    {
+      "fieldname": "file",
+      "fieldtype": "Link",
+      "label": "File",
+      "options": "File",
+      "reqd": 1
+    },
+    {
+      "fieldname": "uploaded_by",
+      "fieldtype": "Link",
+      "label": "Uploaded By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Uploaded\nAccepted\nRejected\nUnclear\nExpired\nMissing\nRe-upload Requested",
+      "default": "Uploaded"
+    },
+    {
+      "fieldname": "review_notes",
+      "fieldtype": "Small Text",
+      "label": "Review Notes"
+    },
+    {
+      "fieldname": "reviewed_by",
+      "fieldtype": "Link",
+      "label": "Reviewed By",
+      "options": "User"
+    },
+    {
+      "fieldname": "reviewed_on",
+      "fieldtype": "Datetime",
+      "label": "Reviewed On"
+    },
+    {
+      "fieldname": "reupload_requested",
+      "fieldtype": "Check",
+      "label": "Re-upload Requested"
+    },
+    {
+      "fieldname": "review_log",
+      "fieldtype": "Table",
+      "label": "Review Log",
+      "options": "Application Document Review Log"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Application Uploaded Document",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Consular Section",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Mission",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Visa Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Passport Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Appointment Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Cashier / Finance Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Applicant",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "file",
+  "search_fields": "application,requirement,document_category,status"
+}

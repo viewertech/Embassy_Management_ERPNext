@@ -1,0 +1,30 @@
+{
+  "add_total_row": 1,
+  "creation": "2026-05-16 00:00:00",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "idx": 0,
+  "is_standard": "Yes",
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Officer Workload",
+  "owner": "Administrator",
+  "prepared_report": 0,
+  "query": "SELECT assigned_officer as \"Officer:Link/User:220\", application_status as \"Status:Data:180\", COUNT(name) as \"Applications:Int:120\" FROM `tabConsular Application` WHERE assigned_officer IS NOT NULL GROUP BY assigned_officer, application_status",
+  "ref_doctype": "Consular Application",
+  "report_name": "Officer Workload",
+  "report_type": "Query Report",
+  "roles": [
+    {
+      "role": "Embassy Administrator"
+    },
+    {
+      "role": "Consular Supervisor"
+    },
+    {
+      "role": "Head of Mission"
+    }
+  ]
+}

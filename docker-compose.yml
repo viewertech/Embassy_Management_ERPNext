@@ -1,0 +1,101 @@
+name: embassy-management-erpnext
+
+x-erpnext-image: &erpnext_image
+  build:
+    context: .
+    dockerfile: docker/Dockerfile
+    args:
+      ERPNEXT_VERSION: ${ERPNEXT_VERSION:-v16}
+  image: viewertech/embassy-management-erpnext:${ERPNEXT_VERSION:-v16}
+
+x-backend-defaults: &backend_defaults
+  <<: *erpnext_image
+  restart: unless-stopped
+  volumes:
+    - sites:/home/frappe/frappe-bench/sites
+    - logs:/home/frappe/frappe-bench/logs
+  env_file:
+    - .env
+  depends_on:
+    mariadb:
+      condition: service_healthy
+    redis-cache:
+      condition: service_started
+    redis-queue:
+      condition: service_started
+
+services:
+  mariadb:
+    image: mariadb:10.11
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-p${DB_ROOT_PASSWORD:-admin}"]
+      interval: 10s
+      retries: 30
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+  redis-cache:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  redis-queue:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  configurator:
+    <<: *backend_defaults
+    restart: "no"
+    entrypoint: ["bash", "-lc"]
+    command: >
+      "bench set-config -g db_host mariadb &&
+       bench set-config -g redis_cache redis://redis-cache:6379 &&
+       bench set-config -g redis_queue redis://redis-queue:6379 &&
+       bench set-config -g redis_socketio redis://redis-queue:6379 &&
+       bench set-config -g socketio_port 9000"
+
+  backend:
+    <<: *backend_defaults
+    command: ["bench", "serve", "--port", "8000"]
+
+  frontend:
+    <<: *backend_defaults
+    command: ["nginx-entrypoint.sh"]
+    environment:
+      BACKEND: backend:8000
+      SOCKETIO: websocket:9000
+      FRAPPE_SITE_NAME_HEADER: ${FRAPPE_SITE_NAME_HEADER:-embassy.localhost}
+      UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
+      UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
+      UPSTREAM_REAL_IP_RECURSIVE: "off"
+      PROXY_READ_TIMEOUT: 120
+      CLIENT_MAX_BODY_SIZE: 50m
+    ports:
+      - "8080:8080"
+
+  websocket:
+    <<: *backend_defaults
+    command: ["node", "/home/frappe/frappe-bench/apps/frappe/socketio.js"]
+
+  queue-short:
+    <<: *backend_defaults
+    command: ["bench", "worker", "--queue", "short,default"]
+
+  queue-long:
+    <<: *backend_defaults
+    command: ["bench", "worker", "--queue", "long,default,short"]
+
+  scheduler:
+    <<: *backend_defaults
+    command: ["bench", "schedule"]
+
+volumes:
+  mariadb-data:
+  sites:
+  logs:

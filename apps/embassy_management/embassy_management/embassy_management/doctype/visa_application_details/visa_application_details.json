@@ -1,0 +1,253 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "consular_application",
+    "visa_type",
+    "entry_type",
+    "purpose_of_travel",
+    "intended_date_of_entry",
+    "intended_date_of_exit",
+    "point_of_entry",
+    "point_of_exit",
+    "host_sponsor",
+    "host_address",
+    "ticket_reference",
+    "ticket_issued_by",
+    "previous_visits",
+    "previous_visa_refusals",
+    "invitation_letter_required",
+    "yellow_fever_certificate_required",
+    "travel_itinerary_required",
+    "hotel_booking_required",
+    "employment_letter_required",
+    "minor_applicant_flag",
+    "parental_consent_required"
+  ],
+  "fields": [
+    {
+      "fieldname": "consular_application",
+      "fieldtype": "Link",
+      "label": "Consular Application",
+      "options": "Consular Application",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "visa_type",
+      "fieldtype": "Select",
+      "label": "Visa Type",
+      "options": "Tourist\nBusiness\nFamily Visit\nOfficial\nDiplomatic\nTransit\nStudent\nWork\nOther"
+    },
+    {
+      "fieldname": "entry_type",
+      "fieldtype": "Select",
+      "label": "Entry Type",
+      "options": "Single\nMultiple\nTransit"
+    },
+    {
+      "fieldname": "purpose_of_travel",
+      "fieldtype": "Small Text",
+      "label": "Purpose of Travel"
+    },
+    {
+      "fieldname": "intended_date_of_entry",
+      "fieldtype": "Date",
+      "label": "Intended Date of Entry"
+    },
+    {
+      "fieldname": "intended_date_of_exit",
+      "fieldtype": "Date",
+      "label": "Intended Date of Exit"
+    },
+    {
+      "fieldname": "point_of_entry",
+      "fieldtype": "Data",
+      "label": "Point of Entry"
+    },
+    {
+      "fieldname": "point_of_exit",
+      "fieldtype": "Data",
+      "label": "Point of Exit"
+    },
+    {
+      "fieldname": "host_sponsor",
+      "fieldtype": "Data",
+      "label": "Host / Sponsor"
+    },
+    {
+      "fieldname": "host_address",
+      "fieldtype": "Small Text",
+      "label": "Host Address"
+    },
+    {
+      "fieldname": "ticket_reference",
+      "fieldtype": "Data",
+      "label": "Ticket Reference"
+    },
+    {
+      "fieldname": "ticket_issued_by",
+      "fieldtype": "Data",
+      "label": "Ticket Issued By"
+    },
+    {
+      "fieldname": "previous_visits",
+      "fieldtype": "Text",
+      "label": "Previous Visits"
+    },
+    {
+      "fieldname": "previous_visa_refusals",
+      "fieldtype": "Text",
+      "label": "Previous Visa Refusals"
+    },
+    {
+      "fieldname": "invitation_letter_required",
+      "fieldtype": "Check",
+      "label": "Invitation Letter Required"
+    },
+    {
+      "fieldname": "yellow_fever_certificate_required",
+      "fieldtype": "Check",
+      "label": "Yellow Fever Certificate Required"
+    },
+    {
+      "fieldname": "travel_itinerary_required",
+      "fieldtype": "Check",
+      "label": "Travel Itinerary Required"
+    },
+    {
+      "fieldname": "hotel_booking_required",
+      "fieldtype": "Check",
+      "label": "Hotel Booking Required"
+    },
+    {
+      "fieldname": "employment_letter_required",
+      "fieldtype": "Check",
+      "label": "Employment Letter Required"
+    },
+    {
+      "fieldname": "minor_applicant_flag",
+      "fieldtype": "Check",
+      "label": "Minor Applicant Flag"
+    },
+    {
+      "fieldname": "parental_consent_required",
+      "fieldtype": "Check",
+      "label": "Parental Consent Required"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Visa Application Details",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Consular Section",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Mission",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Visa Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Passport Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Appointment Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Cashier / Finance Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Applicant",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "consular_application"
+}

@@ -1,0 +1,98 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "location_name",
+    "address",
+    "time_zone",
+    "room_counter",
+    "active"
+  ],
+  "fields": [
+    {
+      "fieldname": "location_name",
+      "fieldtype": "Data",
+      "label": "Location Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Link",
+      "label": "Address",
+      "options": "Address"
+    },
+    {
+      "fieldname": "time_zone",
+      "fieldtype": "Data",
+      "label": "Time Zone"
+    },
+    {
+      "fieldname": "room_counter",
+      "fieldtype": "Data",
+      "label": "Room / Counter"
+    },
+    {
+      "fieldname": "active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Appointment Location",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "autoname": "field:location_name",
+  "title_field": "location_name"
+}

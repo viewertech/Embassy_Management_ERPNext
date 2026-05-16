@@ -1,0 +1,23 @@
+[project]
+name = "embassy_management"
+authors = [
+    { name = "Viewertech", email = "hello@viewertech.net" }
+]
+description = "Reusable ERPNext/Frappe Embassy Management System"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/viewertech/Embassy_Management_ERPNext"
+Brand = "https://viewertech.net"
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "embassy_management"
+
+[tool.bench.dev-dependencies]

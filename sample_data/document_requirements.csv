@@ -1,0 +1,6 @@
+parent,parenttype,parentfield,document_category,requirement_label,mandatory,allowed_file_types,max_file_size_mb,instructions
+GEN-VISA,Consular Service,required_documents,Passport,Passport biodata page,1,"pdf,jpg,jpeg,png",10,Upload a clear copy of the passport biodata page.
+GEN-VISA,Consular Service,required_documents,Photo,Passport photo,1,"jpg,jpeg,png",5,Upload a recent colour photograph.
+GEN-PASSPORT,Consular Service,required_documents,Proof of Address,Proof of address,1,"pdf,jpg,jpeg,png",10,Upload recent proof of address.
+GEN-CARD,Consular Service,required_documents,Other Documents,Proof of nationality,1,"pdf,jpg,jpeg,png",10,Upload accepted proof of nationality.
+GEN-ATTEST,Consular Service,required_documents,Other Documents,Document for attestation,1,"pdf,jpg,jpeg,png",10,Upload the document to be reviewed.

@@ -1,0 +1,325 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "mission_details",
+    "embassy_mission_name",
+    "embassy_type",
+    "sending_country",
+    "host_country",
+    "city",
+    "address",
+    "column",
+    "telephone",
+    "public_email",
+    "consular_enquiry_email",
+    "visa_enquiry_email",
+    "website",
+    "defaults",
+    "default_currency",
+    "default_language",
+    "additional_languages",
+    "time_zone",
+    "default_payment_mode",
+    "default_workflow",
+    "appointments",
+    "appointment_working_days",
+    "appointment_opening_hours",
+    "public_holiday_list",
+    "online_application_url",
+    "appointment_booking_url",
+    "branding",
+    "mission_logo",
+    "national_emblem_placeholder",
+    "letter_head",
+    "email_footer",
+    "primary_brand_colour",
+    "secondary_brand_colour",
+    "leadership",
+    "consular_officer_in_charge",
+    "head_of_mission",
+    "public_text",
+    "data_protection_notice",
+    "terms_and_conditions",
+    "privacy_notice",
+    "declaration_text",
+    "submission_confirmation_text"
+  ],
+  "fields": [
+    {
+      "fieldname": "mission_details",
+      "fieldtype": "Section Break",
+      "label": "Mission Details"
+    },
+    {
+      "fieldname": "embassy_mission_name",
+      "fieldtype": "Data",
+      "label": "Embassy / Mission Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "embassy_type",
+      "fieldtype": "Select",
+      "label": "Embassy Type",
+      "options": "Embassy\nHigh Commission\nConsulate\nPermanent Mission\nHonorary Consulate",
+      "reqd": 1
+    },
+    {
+      "fieldname": "sending_country",
+      "fieldtype": "Link",
+      "label": "Sending Country",
+      "options": "Country",
+      "reqd": 1
+    },
+    {
+      "fieldname": "host_country",
+      "fieldtype": "Link",
+      "label": "Host Country",
+      "options": "Country",
+      "reqd": 1
+    },
+    {
+      "fieldname": "city",
+      "fieldtype": "Data",
+      "label": "City"
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Link",
+      "label": "Address",
+      "options": "Address"
+    },
+    {
+      "fieldname": "column",
+      "fieldtype": "Column Break",
+      "label": "Column"
+    },
+    {
+      "fieldname": "telephone",
+      "fieldtype": "Data",
+      "label": "Telephone"
+    },
+    {
+      "fieldname": "public_email",
+      "fieldtype": "Data",
+      "label": "Public Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "consular_enquiry_email",
+      "fieldtype": "Data",
+      "label": "Consular Enquiry Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "visa_enquiry_email",
+      "fieldtype": "Data",
+      "label": "Visa Enquiry Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "website",
+      "fieldtype": "Data",
+      "label": "Website"
+    },
+    {
+      "fieldname": "defaults",
+      "fieldtype": "Section Break",
+      "label": "Defaults"
+    },
+    {
+      "fieldname": "default_currency",
+      "fieldtype": "Link",
+      "label": "Default Currency",
+      "options": "Currency"
+    },
+    {
+      "fieldname": "default_language",
+      "fieldtype": "Link",
+      "label": "Default Language",
+      "options": "Language"
+    },
+    {
+      "fieldname": "additional_languages",
+      "fieldtype": "Table",
+      "label": "Additional Languages",
+      "options": "Embassy Language"
+    },
+    {
+      "fieldname": "time_zone",
+      "fieldtype": "Data",
+      "label": "Time Zone"
+    },
+    {
+      "fieldname": "default_payment_mode",
+      "fieldtype": "Link",
+      "label": "Default Payment Mode",
+      "options": "Mode of Payment"
+    },
+    {
+      "fieldname": "default_workflow",
+      "fieldtype": "Link",
+      "label": "Default Workflow",
+      "options": "Workflow"
+    },
+    {
+      "fieldname": "appointments",
+      "fieldtype": "Section Break",
+      "label": "Appointments"
+    },
+    {
+      "fieldname": "appointment_working_days",
+      "fieldtype": "Table",
+      "label": "Appointment Working Days",
+      "options": "Embassy Working Day"
+    },
+    {
+      "fieldname": "appointment_opening_hours",
+      "fieldtype": "Table",
+      "label": "Appointment Opening Hours",
+      "options": "Embassy Opening Hour"
+    },
+    {
+      "fieldname": "public_holiday_list",
+      "fieldtype": "Link",
+      "label": "Public Holiday List",
+      "options": "Holiday List"
+    },
+    {
+      "fieldname": "online_application_url",
+      "fieldtype": "Data",
+      "label": "Online Application URL"
+    },
+    {
+      "fieldname": "appointment_booking_url",
+      "fieldtype": "Data",
+      "label": "Appointment Booking URL"
+    },
+    {
+      "fieldname": "branding",
+      "fieldtype": "Section Break",
+      "label": "Branding"
+    },
+    {
+      "fieldname": "mission_logo",
+      "fieldtype": "Attach Image",
+      "label": "Mission Logo"
+    },
+    {
+      "fieldname": "national_emblem_placeholder",
+      "fieldtype": "Attach Image",
+      "label": "National Emblem / Coat of Arms Placeholder"
+    },
+    {
+      "fieldname": "letter_head",
+      "fieldtype": "Link",
+      "label": "Letter Head",
+      "options": "Letter Head"
+    },
+    {
+      "fieldname": "email_footer",
+      "fieldtype": "Text Editor",
+      "label": "Email Footer",
+      "default": "Powered by <a href=\"https://viewertech.net\">Viewertech</a>"
+    },
+    {
+      "fieldname": "primary_brand_colour",
+      "fieldtype": "Color",
+      "label": "Primary Brand Colour",
+      "default": "#144870"
+    },
+    {
+      "fieldname": "secondary_brand_colour",
+      "fieldtype": "Color",
+      "label": "Secondary Brand Colour",
+      "default": "#e6b654"
+    },
+    {
+      "fieldname": "leadership",
+      "fieldtype": "Section Break",
+      "label": "Leadership"
+    },
+    {
+      "fieldname": "consular_officer_in_charge",
+      "fieldtype": "Link",
+      "label": "Consular Officer in Charge",
+      "options": "User"
+    },
+    {
+      "fieldname": "head_of_mission",
+      "fieldtype": "Link",
+      "label": "Head of Mission",
+      "options": "User"
+    },
+    {
+      "fieldname": "public_text",
+      "fieldtype": "Section Break",
+      "label": "Public Text"
+    },
+    {
+      "fieldname": "data_protection_notice",
+      "fieldtype": "Text Editor",
+      "label": "Data Protection Notice"
+    },
+    {
+      "fieldname": "terms_and_conditions",
+      "fieldtype": "Text Editor",
+      "label": "Terms and Conditions"
+    },
+    {
+      "fieldname": "privacy_notice",
+      "fieldtype": "Text Editor",
+      "label": "Privacy Notice"
+    },
+    {
+      "fieldname": "declaration_text",
+      "fieldtype": "Text Editor",
+      "label": "Declaration Text"
+    },
+    {
+      "fieldname": "submission_confirmation_text",
+      "fieldtype": "Text Editor",
+      "label": "Submission Confirmation Text"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 1,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Embassy Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

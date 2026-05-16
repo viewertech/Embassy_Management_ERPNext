@@ -1,0 +1,175 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "consular_application",
+    "document_type",
+    "document_owner",
+    "issuing_authority",
+    "country_of_issue",
+    "legalisation_type",
+    "number_of_copies",
+    "original_document_verified"
+  ],
+  "fields": [
+    {
+      "fieldname": "consular_application",
+      "fieldtype": "Link",
+      "label": "Consular Application",
+      "options": "Consular Application",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "document_type",
+      "fieldtype": "Data",
+      "label": "Document Type"
+    },
+    {
+      "fieldname": "document_owner",
+      "fieldtype": "Data",
+      "label": "Document Owner"
+    },
+    {
+      "fieldname": "issuing_authority",
+      "fieldtype": "Data",
+      "label": "Issuing Authority"
+    },
+    {
+      "fieldname": "country_of_issue",
+      "fieldtype": "Link",
+      "label": "Country of Issue",
+      "options": "Country"
+    },
+    {
+      "fieldname": "legalisation_type",
+      "fieldtype": "Select",
+      "label": "Legalisation Type",
+      "options": "Attestation\nLegalisation\nCertified Copy\nSignature Verification\nOther"
+    },
+    {
+      "fieldname": "number_of_copies",
+      "fieldtype": "Int",
+      "label": "Number of Copies",
+      "default": 1
+    },
+    {
+      "fieldname": "original_document_verified",
+      "fieldtype": "Check",
+      "label": "Original Document Verified"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Attestation Legalisation Details",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Consular Section",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Mission",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Visa Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Passport Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Appointment Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Cashier / Finance Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Applicant",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

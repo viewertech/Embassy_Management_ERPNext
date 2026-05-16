@@ -1,0 +1,150 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "service",
+    "visa_type",
+    "nationality",
+    "residence_country",
+    "processing_type",
+    "entry_type",
+    "fee_item",
+    "amount",
+    "currency",
+    "effective_from",
+    "effective_to",
+    "active"
+  ],
+  "fields": [
+    {
+      "fieldname": "service",
+      "fieldtype": "Link",
+      "label": "Service",
+      "options": "Consular Service",
+      "reqd": 1
+    },
+    {
+      "fieldname": "visa_type",
+      "fieldtype": "Select",
+      "label": "Visa Type",
+      "options": "\nTourist\nBusiness\nFamily Visit\nOfficial\nDiplomatic\nTransit\nStudent\nWork\nOther"
+    },
+    {
+      "fieldname": "nationality",
+      "fieldtype": "Link",
+      "label": "Nationality",
+      "options": "Country"
+    },
+    {
+      "fieldname": "residence_country",
+      "fieldtype": "Link",
+      "label": "Residence Country",
+      "options": "Country"
+    },
+    {
+      "fieldname": "processing_type",
+      "fieldtype": "Select",
+      "label": "Processing Type",
+      "options": "Normal\nFast Track\nEmergency",
+      "default": "Normal"
+    },
+    {
+      "fieldname": "entry_type",
+      "fieldtype": "Select",
+      "label": "Entry Type",
+      "options": "\nSingle\nMultiple\nTransit"
+    },
+    {
+      "fieldname": "fee_item",
+      "fieldtype": "Link",
+      "label": "Fee Item",
+      "options": "Item"
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Amount",
+      "options": "currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "effective_from",
+      "fieldtype": "Date",
+      "label": "Effective From"
+    },
+    {
+      "fieldname": "effective_to",
+      "fieldtype": "Date",
+      "label": "Effective To"
+    },
+    {
+      "fieldname": "active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Consular Fee Rule",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "search_fields": "service,visa_type,nationality,residence_country,processing_type"
+}

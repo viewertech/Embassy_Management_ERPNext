@@ -1,0 +1,6 @@
+service,visa_type,nationality,residence_country,processing_type,entry_type,amount,currency,active
+GEN-VISA,Tourist,,,Normal,Single,100,USD,1
+GEN-VISA,Business,,,Normal,Multiple,150,USD,1
+GEN-PASSPORT,,,,Normal,,80,USD,1
+GEN-CARD,,,,Normal,,50,USD,1
+GEN-ATTEST,,,,Normal,,40,USD,1

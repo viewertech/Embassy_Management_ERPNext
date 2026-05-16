@@ -1,0 +1,45 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "language",
+    "language_code",
+    "is_default"
+  ],
+  "fields": [
+    {
+      "fieldname": "language",
+      "fieldtype": "Link",
+      "label": "Language",
+      "options": "Language",
+      "reqd": 1
+    },
+    {
+      "fieldname": "language_code",
+      "fieldtype": "Data",
+      "label": "Language Code"
+    },
+    {
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 1,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Embassy Language",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

@@ -1,0 +1,15 @@
+{
+  "doctype": "Embassy Settings",
+  "embassy_mission_name": "Generic Embassy",
+  "embassy_type": "Embassy",
+  "sending_country": "Example Sending Country",
+  "host_country": "Example Host Country",
+  "city": "Example City",
+  "default_currency": "USD",
+  "default_language": "en",
+  "time_zone": "Etc/UTC",
+  "email_footer": "Powered by <a href=\"https://viewertech.net\">Viewertech</a>",
+  "primary_brand_colour": "#144870",
+  "secondary_brand_colour": "#e6b654",
+  "sample_data_notice": "Generic non-official sample data. Not government approved."
+}

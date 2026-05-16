@@ -1,0 +1,156 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "section",
+    "field_name",
+    "label",
+    "field_type",
+    "options",
+    "required",
+    "hidden",
+    "read_only",
+    "default_value",
+    "depends_on",
+    "mandatory_depends_on",
+    "sequence",
+    "maps_to_doctype",
+    "maps_to_field"
+  ],
+  "fields": [
+    {
+      "fieldname": "section",
+      "fieldtype": "Link",
+      "label": "Section",
+      "options": "Application Form Section",
+      "reqd": 1
+    },
+    {
+      "fieldname": "field_name",
+      "fieldtype": "Data",
+      "label": "Field Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "label",
+      "fieldtype": "Data",
+      "label": "Label",
+      "reqd": 1
+    },
+    {
+      "fieldname": "field_type",
+      "fieldtype": "Select",
+      "label": "Field Type",
+      "options": "Text\nLong Text\nDate\nSelect\nLink\nCountry\nEmail\nPhone\nCurrency\nFile Upload\nCheckbox\nTable\nHidden\nRead Only",
+      "reqd": 1
+    },
+    {
+      "fieldname": "options",
+      "fieldtype": "Small Text",
+      "label": "Options"
+    },
+    {
+      "fieldname": "required",
+      "fieldtype": "Check",
+      "label": "Required"
+    },
+    {
+      "fieldname": "hidden",
+      "fieldtype": "Check",
+      "label": "Hidden"
+    },
+    {
+      "fieldname": "read_only",
+      "fieldtype": "Check",
+      "label": "Read Only"
+    },
+    {
+      "fieldname": "default_value",
+      "fieldtype": "Small Text",
+      "label": "Default Value"
+    },
+    {
+      "fieldname": "depends_on",
+      "fieldtype": "Small Text",
+      "label": "Depends On"
+    },
+    {
+      "fieldname": "mandatory_depends_on",
+      "fieldtype": "Small Text",
+      "label": "Mandatory Depends On"
+    },
+    {
+      "fieldname": "sequence",
+      "fieldtype": "Int",
+      "label": "Sequence",
+      "default": 1
+    },
+    {
+      "fieldname": "maps_to_doctype",
+      "fieldtype": "Data",
+      "label": "Maps To DocType"
+    },
+    {
+      "fieldname": "maps_to_field",
+      "fieldtype": "Data",
+      "label": "Maps To Field"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Application Form Field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "label",
+  "search_fields": "label,field_name,section"
+}

@@ -1,0 +1,242 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "booking_code",
+    "application",
+    "applicant",
+    "service",
+    "appointment_service_type",
+    "location",
+    "officer",
+    "slot",
+    "appointment_date",
+    "start_time",
+    "end_time",
+    "status",
+    "external_appointment_reference",
+    "queue_number",
+    "reschedule_count",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "EMS-APT-.YYYY.-",
+      "default": "EMS-APT-.YYYY.-"
+    },
+    {
+      "fieldname": "booking_code",
+      "fieldtype": "Data",
+      "label": "Booking Code",
+      "read_only": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "application",
+      "fieldtype": "Link",
+      "label": "Application",
+      "options": "Consular Application"
+    },
+    {
+      "fieldname": "applicant",
+      "fieldtype": "Link",
+      "label": "Applicant",
+      "options": "Embassy Applicant Profile"
+    },
+    {
+      "fieldname": "service",
+      "fieldtype": "Link",
+      "label": "Service",
+      "options": "Consular Service"
+    },
+    {
+      "fieldname": "appointment_service_type",
+      "fieldtype": "Link",
+      "label": "Appointment Service Type",
+      "options": "Appointment Service Type"
+    },
+    {
+      "fieldname": "location",
+      "fieldtype": "Link",
+      "label": "Location",
+      "options": "Appointment Location"
+    },
+    {
+      "fieldname": "officer",
+      "fieldtype": "Link",
+      "label": "Officer",
+      "options": "User"
+    },
+    {
+      "fieldname": "slot",
+      "fieldtype": "Link",
+      "label": "Slot",
+      "options": "Appointment Slot"
+    },
+    {
+      "fieldname": "appointment_date",
+      "fieldtype": "Date",
+      "label": "Appointment Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "start_time",
+      "fieldtype": "Time",
+      "label": "Start Time",
+      "reqd": 1
+    },
+    {
+      "fieldname": "end_time",
+      "fieldtype": "Time",
+      "label": "End Time"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nBooked\nConfirmed\nRescheduled\nCancelled\nCompleted\nNo-show\nWalk-in",
+      "default": "Booked"
+    },
+    {
+      "fieldname": "external_appointment_reference",
+      "fieldtype": "Data",
+      "label": "External Appointment Reference"
+    },
+    {
+      "fieldname": "queue_number",
+      "fieldtype": "Data",
+      "label": "Queue Number"
+    },
+    {
+      "fieldname": "reschedule_count",
+      "fieldtype": "Int",
+      "label": "Reschedule Count",
+      "default": 0
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Embassy Appointment",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Consular Section",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Mission",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Visa Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Passport Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Appointment Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Cashier / Finance Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Applicant",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "autoname": "naming_series:",
+  "title_field": "booking_code",
+  "search_fields": "booking_code,application,applicant,service,status"
+}

@@ -1,0 +1,50 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "label",
+    "from_time",
+    "to_time",
+    "capacity"
+  ],
+  "fields": [
+    {
+      "fieldname": "label",
+      "fieldtype": "Data",
+      "label": "Label"
+    },
+    {
+      "fieldname": "from_time",
+      "fieldtype": "Time",
+      "label": "From Time"
+    },
+    {
+      "fieldname": "to_time",
+      "fieldtype": "Time",
+      "label": "To Time"
+    },
+    {
+      "fieldname": "capacity",
+      "fieldtype": "Int",
+      "label": "Capacity",
+      "default": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 1,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Embassy Opening Hour",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

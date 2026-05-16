@@ -1,0 +1,376 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "application",
+    "naming_series",
+    "application_number",
+    "applicant",
+    "customer",
+    "contact",
+    "service",
+    "embassy_mission",
+    "column",
+    "application_status",
+    "priority",
+    "submission_channel",
+    "booking_code",
+    "appointment",
+    "payment",
+    "total_fee",
+    "currency",
+    "payment_status",
+    "sales_invoice",
+    "payment_entry",
+    "review",
+    "assigned_officer",
+    "review_status",
+    "decision",
+    "decision_date",
+    "rejection_reason",
+    "internal_notes",
+    "applicant_notes",
+    "submission",
+    "submitted_on",
+    "last_updated_on",
+    "progress_percent",
+    "declaration_accepted",
+    "privacy_consent",
+    "terms_accepted",
+    "locked_after_submission"
+  ],
+  "fields": [
+    {
+      "fieldname": "application",
+      "fieldtype": "Section Break",
+      "label": "Application"
+    },
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "EMS-APP-.YYYY.-",
+      "default": "EMS-APP-.YYYY.-",
+      "reqd": 1
+    },
+    {
+      "fieldname": "application_number",
+      "fieldtype": "Data",
+      "label": "Application Number",
+      "read_only": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "applicant",
+      "fieldtype": "Link",
+      "label": "Applicant",
+      "options": "Embassy Applicant Profile",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "contact",
+      "fieldtype": "Link",
+      "label": "Contact",
+      "options": "Contact"
+    },
+    {
+      "fieldname": "service",
+      "fieldtype": "Link",
+      "label": "Service",
+      "options": "Consular Service",
+      "reqd": 1
+    },
+    {
+      "fieldname": "embassy_mission",
+      "fieldtype": "Data",
+      "label": "Embassy / Mission"
+    },
+    {
+      "fieldname": "column",
+      "fieldtype": "Column Break",
+      "label": "Column"
+    },
+    {
+      "fieldname": "application_status",
+      "fieldtype": "Select",
+      "label": "Application Status",
+      "options": "Draft\nSubmitted\nPayment Pending\nPayment Confirmed\nAppointment Required\nAppointment Booked\nUnder Initial Review\nAwaiting Additional Documents\nAwaiting Interview\nUnder Officer Review\nApproved\nRejected\nCancelled\nCompleted\nCollected / Dispatched",
+      "default": "Draft",
+      "reqd": 1
+    },
+    {
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "label": "Priority",
+      "options": "Normal\nUrgent\nEmergency",
+      "default": "Normal"
+    },
+    {
+      "fieldname": "submission_channel",
+      "fieldtype": "Select",
+      "label": "Submission Channel",
+      "options": "Online\nWalk-in\nPostal\nAgent\nInternal",
+      "default": "Online"
+    },
+    {
+      "fieldname": "booking_code",
+      "fieldtype": "Data",
+      "label": "Booking Code",
+      "read_only": 1
+    },
+    {
+      "fieldname": "appointment",
+      "fieldtype": "Link",
+      "label": "Appointment",
+      "options": "Embassy Appointment"
+    },
+    {
+      "fieldname": "payment",
+      "fieldtype": "Section Break",
+      "label": "Payment"
+    },
+    {
+      "fieldname": "total_fee",
+      "fieldtype": "Currency",
+      "label": "Total Fee",
+      "options": "currency"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency"
+    },
+    {
+      "fieldname": "payment_status",
+      "fieldtype": "Select",
+      "label": "Payment Status",
+      "options": "Not Required\nPayment Pending\nPayment Under Review\nPayment Confirmed\nPartially Refunded\nRefunded\nFailed",
+      "default": "Payment Pending"
+    },
+    {
+      "fieldname": "sales_invoice",
+      "fieldtype": "Link",
+      "label": "Sales Invoice",
+      "options": "Sales Invoice"
+    },
+    {
+      "fieldname": "payment_entry",
+      "fieldtype": "Link",
+      "label": "Payment Entry",
+      "options": "Payment Entry"
+    },
+    {
+      "fieldname": "review",
+      "fieldtype": "Section Break",
+      "label": "Review"
+    },
+    {
+      "fieldname": "assigned_officer",
+      "fieldtype": "Link",
+      "label": "Assigned Officer",
+      "options": "User"
+    },
+    {
+      "fieldname": "review_status",
+      "fieldtype": "Select",
+      "label": "Review Status",
+      "options": "Not Started\nIn Progress\nAdditional Documents Requested\nEscalated\nReady for Decision",
+      "default": "Not Started"
+    },
+    {
+      "fieldname": "decision",
+      "fieldtype": "Select",
+      "label": "Decision",
+      "options": "\nApproved\nRejected\nWithdrawn\nCancelled"
+    },
+    {
+      "fieldname": "decision_date",
+      "fieldtype": "Date",
+      "label": "Decision Date"
+    },
+    {
+      "fieldname": "rejection_reason",
+      "fieldtype": "Small Text",
+      "label": "Rejection Reason"
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text Editor",
+      "label": "Internal Notes"
+    },
+    {
+      "fieldname": "applicant_notes",
+      "fieldtype": "Text Editor",
+      "label": "Applicant Notes"
+    },
+    {
+      "fieldname": "submission",
+      "fieldtype": "Section Break",
+      "label": "Submission"
+    },
+    {
+      "fieldname": "submitted_on",
+      "fieldtype": "Datetime",
+      "label": "Submitted On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_updated_on",
+      "fieldtype": "Datetime",
+      "label": "Last Updated On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "progress_percent",
+      "fieldtype": "Percent",
+      "label": "Progress Percent"
+    },
+    {
+      "fieldname": "declaration_accepted",
+      "fieldtype": "Check",
+      "label": "Declaration Accepted",
+      "read_only": 1
+    },
+    {
+      "fieldname": "privacy_consent",
+      "fieldtype": "Check",
+      "label": "Privacy Consent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "terms_accepted",
+      "fieldtype": "Check",
+      "label": "Terms Accepted",
+      "read_only": 1
+    },
+    {
+      "fieldname": "locked_after_submission",
+      "fieldtype": "Check",
+      "label": "Locked After Submission",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 0,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Consular Application",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Embassy Administrator",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Consular Supervisor",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Consular Section",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1,
+      "share": 1
+    },
+    {
+      "role": "Head of Mission",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1,
+      "export": 1
+    },
+    {
+      "role": "Consular Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Visa Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Passport Officer",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Appointment Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Cashier / Finance Officer",
+      "read": 1,
+      "write": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "Applicant",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "print": 1,
+      "email": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "autoname": "naming_series:",
+  "title_field": "application_number",
+  "search_fields": "application_number,applicant,service,application_status,booking_code"
+}

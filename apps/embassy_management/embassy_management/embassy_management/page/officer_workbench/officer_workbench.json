@@ -1,0 +1,26 @@
+{
+  "creation": "2026-05-16 00:00:00",
+  "docstatus": 0,
+  "doctype": "Page",
+  "idx": 0,
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "officer-workbench",
+  "owner": "Administrator",
+  "page_name": "officer-workbench",
+  "roles": [
+    {
+      "role": "Consular Officer"
+    },
+    {
+      "role": "Consular Supervisor"
+    },
+    {
+      "role": "Embassy Administrator"
+    }
+  ],
+  "standard": "Yes",
+  "system_page": 0,
+  "title": "Officer Workbench"
+}

@@ -1,0 +1,74 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-05-16 00:00:00",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "document_category",
+    "requirement_label",
+    "mandatory",
+    "allowed_file_types",
+    "max_file_size_mb",
+    "instructions",
+    "conditional_rule"
+  ],
+  "fields": [
+    {
+      "fieldname": "document_category",
+      "fieldtype": "Select",
+      "label": "Document Category",
+      "options": "Photo\nPassport\nProof of Address\nEmployment Letter\nInvitation Letter\nFlight Ticket\nYellow Fever Certificate\nSignature\nOther Documents",
+      "reqd": 1
+    },
+    {
+      "fieldname": "requirement_label",
+      "fieldtype": "Data",
+      "label": "Requirement Label",
+      "reqd": 1
+    },
+    {
+      "fieldname": "mandatory",
+      "fieldtype": "Check",
+      "label": "Mandatory",
+      "default": 1
+    },
+    {
+      "fieldname": "allowed_file_types",
+      "fieldtype": "Data",
+      "label": "Allowed File Types",
+      "default": "pdf,jpg,jpeg,png"
+    },
+    {
+      "fieldname": "max_file_size_mb",
+      "fieldtype": "Int",
+      "label": "Max File Size MB",
+      "default": 10
+    },
+    {
+      "fieldname": "instructions",
+      "fieldtype": "Small Text",
+      "label": "Instructions"
+    },
+    {
+      "fieldname": "conditional_rule",
+      "fieldtype": "Link",
+      "label": "Conditional Rule",
+      "options": "Application Form Rule"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "istable": 1,
+  "issingle": 0,
+  "links": [],
+  "modified": "2026-05-16 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "Consular Service Document Requirement",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

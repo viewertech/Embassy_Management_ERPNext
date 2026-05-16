@@ -1,0 +1,42 @@
+[
+  {
+    "doctype": "Dashboard Chart",
+    "name": "EMS - Applications by Service",
+    "chart_name": "EMS - Applications by Service",
+    "chart_type": "Group By",
+    "document_type": "Consular Application",
+    "group_by_based_on": "service",
+    "group_by_type": "Count",
+    "number_of_groups": 10,
+    "is_public": 1,
+    "module": "Embassy Management",
+    "filters_json": "[]"
+  },
+  {
+    "doctype": "Dashboard Chart",
+    "name": "EMS - Applications by Status",
+    "chart_name": "EMS - Applications by Status",
+    "chart_type": "Group By",
+    "document_type": "Consular Application",
+    "group_by_based_on": "application_status",
+    "group_by_type": "Count",
+    "number_of_groups": 10,
+    "is_public": 1,
+    "module": "Embassy Management",
+    "filters_json": "[]"
+  },
+  {
+    "doctype": "Dashboard Chart",
+    "name": "EMS - Appointments by Day",
+    "chart_name": "EMS - Appointments by Day",
+    "chart_type": "Count",
+    "document_type": "Embassy Appointment",
+    "based_on": "appointment_date",
+    "timeseries": 1,
+    "time_interval": "Daily",
+    "timespan": "Last Month",
+    "is_public": 1,
+    "module": "Embassy Management",
+    "filters_json": "[]"
+  }
+]
