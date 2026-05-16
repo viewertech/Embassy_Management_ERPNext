@@ -19,6 +19,7 @@ USER_GUIDE_OUTPUT_DIR = GUIDES_DIR / "docx"
 POWERED_BY = "Powered by Viewertech"
 POWERED_BY_URL = "https://viewertech.net"
 TOP_LEVEL_DOCS = (
+    "ubuntu-full-setup-guide.md",
     "DEPLOYMENT.md",
     "CONFIGURATION.md",
     "HANDOVER.md",

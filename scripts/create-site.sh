@@ -75,4 +75,4 @@ configure_bench_for_docker
 
 "${ROOT_DIR}/scripts/install-apps.sh"
 
-echo "Site ${SITE_NAME} is ready at http://localhost:${HTTP_PUBLISH_PORT:-8080}"
+echo "Site ${SITE_NAME} is ready at http://localhost:${HTTP_PUBLISH_PORT:-8091}"

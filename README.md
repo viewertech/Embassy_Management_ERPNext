@@ -75,7 +75,7 @@ docker compose up -d
 7. Open the site:
 
 ```text
-http://localhost:8080
+http://localhost:8091
 ```
 
 ## Site Creation
@@ -191,7 +191,7 @@ Dashboard number cards cover today, this week, this month, urgent cases, overdue
 ./scripts/clear-sample-data.sh
 ```
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/HANDOVER.md](docs/HANDOVER.md), and [docs/SECURITY.md](docs/SECURITY.md) for operating details.
+See [docs/ubuntu-full-setup-guide.md](docs/ubuntu-full-setup-guide.md), [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/HANDOVER.md](docs/HANDOVER.md), and [docs/SECURITY.md](docs/SECURITY.md) for operating details.
 
 ## GitHub
 
