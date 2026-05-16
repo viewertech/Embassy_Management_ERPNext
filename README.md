@@ -63,10 +63,16 @@ docker compose up -d
 5. Import generic sample data when needed:
 
 ```bash
-./scripts/import-sample-data.sh
+./scripts/load-sample-data.sh
 ```
 
-6. Open the site:
+6. Repair asset links if the frontend serves stale assets after rebuilds:
+
+```bash
+./scripts/repair-assets.sh
+```
+
+7. Open the site:
 
 ```text
 http://localhost:8080
@@ -79,6 +85,14 @@ The default scripts read `.env` values:
 - `SITE_NAME`
 - `ADMIN_PASSWORD`
 - `DB_ROOT_PASSWORD`
+- `DB_ROOT_USER`
+- `DB_HOST`
+- `DB_PORT`
+- `SOCKETIO_PORT`
+- `INSTALL_APPS`
+- `HTTP_PUBLISH_PORT`
+- `BACKUP_DIR`
+- `BACKUP_RETENTION_DAYS`
 - `DEFAULT_CURRENCY`
 - `DEFAULT_COUNTRY`
 - `DEFAULT_TIMEZONE`
@@ -172,8 +186,9 @@ Dashboard number cards cover today, this week, this month, urgent cases, overdue
 
 ```bash
 ./scripts/backup-site.sh
-./scripts/restore-site.sh ./backups/site-backup.sql.gz
+./scripts/restore-site.sh --database ./backups/site-backup.sql.gz
 ./scripts/update-site.sh
+./scripts/clear-sample-data.sh
 ```
 
 See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/HANDOVER.md](docs/HANDOVER.md), and [docs/SECURITY.md](docs/SECURITY.md) for operating details.

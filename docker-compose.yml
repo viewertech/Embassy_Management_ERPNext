@@ -77,7 +77,7 @@ services:
       PROXY_READ_TIMEOUT: 120
       CLIENT_MAX_BODY_SIZE: 50m
     ports:
-      - "8080:8080"
+      - "${HTTP_PUBLISH_PORT:-8080}:8080"
 
   websocket:
     <<: *backend_defaults

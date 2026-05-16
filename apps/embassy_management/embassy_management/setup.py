@@ -42,6 +42,12 @@ def ensure_roles():
 
 def import_sample_data():
     ensure_roles()
+    if not frappe.db.exists("Appointment Location", "Generic Consular Counter"):
+        location = frappe.new_doc("Appointment Location")
+        location.location_name = "Generic Consular Counter"
+        location.active = 1
+        location.insert(ignore_permissions=True)
+
     app_path = Path(frappe.get_app_path("embassy_management")).resolve()
     candidates = [
         app_path / "sample_data",
@@ -69,9 +75,52 @@ def import_sample_data():
                 name = row.get("name")
                 if name and frappe.db.exists(doctype, name):
                     continue
+                if _sample_row_exists(doctype, row):
+                    continue
                 doc = frappe.new_doc(doctype)
                 for key, value in row.items():
                     if key and value != "":
                         doc.set(key, value)
                 doc.insert(ignore_permissions=True)
     frappe.db.commit()
+
+
+def _sample_row_exists(doctype, row):
+    if doctype == "Consular Fee Rule":
+        return bool(
+            frappe.db.exists(
+                doctype,
+                {
+                    "service": row.get("service"),
+                    "visa_type": row.get("visa_type") or "",
+                    "processing_type": row.get("processing_type") or "Normal",
+                    "entry_type": row.get("entry_type") or "",
+                    "amount": row.get("amount"),
+                    "currency": row.get("currency"),
+                },
+            )
+        )
+    if doctype == "Consular Service Document Requirement":
+        return bool(
+            frappe.db.exists(
+                doctype,
+                {
+                    "parent": row.get("parent"),
+                    "parenttype": row.get("parenttype"),
+                    "requirement_label": row.get("requirement_label"),
+                },
+            )
+        )
+    if doctype == "Appointment Slot":
+        return bool(
+            frappe.db.exists(
+                doctype,
+                {
+                    "service": row.get("service"),
+                    "location": row.get("location"),
+                    "slot_date": row.get("slot_date"),
+                    "from_time": row.get("from_time"),
+                },
+            )
+        )
+    return False

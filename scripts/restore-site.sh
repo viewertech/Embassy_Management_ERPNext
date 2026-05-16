@@ -1,15 +1,68 @@
 #!/usr/bin/env bash
 set -euo pipefail
-if [ $# -lt 1 ]; then
-  echo "Usage: ./scripts/restore-site.sh /path/to/database.sql.gz [public-files.tar] [private-files.tar]"
+
+usage() {
+  echo "Usage: $0 --database path/to/database.sql.gz [--public-files path] [--private-files path]"
+}
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${ROOT_DIR}"
+
+if [[ -f .env ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  source .env
+  set +a
+fi
+
+SITE_NAME="${SITE_NAME:-embassy.localhost}"
+DATABASE=""
+PUBLIC_FILES=""
+PRIVATE_FILES=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --database)
+      DATABASE="$2"
+      shift 2
+      ;;
+    --public-files)
+      PUBLIC_FILES="$2"
+      shift 2
+      ;;
+    --private-files)
+      PRIVATE_FILES="$2"
+      shift 2
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z "${DATABASE}" || ! -f "${DATABASE}" ]]; then
+  usage
   exit 1
 fi
-source .env
-DB_BACKUP="$1"
-PUBLIC_FILES="${2:-}"
-PRIVATE_FILES="${3:-}"
-docker compose cp "${DB_BACKUP}" "backend:/tmp/restore.sql.gz"
-if [ -n "${PUBLIC_FILES}" ]; then docker compose cp "${PUBLIC_FILES}" "backend:/tmp/public-files.tar"; fi
-if [ -n "${PRIVATE_FILES}" ]; then docker compose cp "${PRIVATE_FILES}" "backend:/tmp/private-files.tar"; fi
-docker compose run --rm backend bash -lc "bench --site ${SITE_NAME} restore /tmp/restore.sql.gz --mariadb-root-password ${DB_ROOT_PASSWORD} --force"
-docker compose run --rm backend bash -lc "bench --site ${SITE_NAME} migrate && bench --site ${SITE_NAME} clear-cache"
+
+docker compose cp "${DATABASE}" "backend:/tmp/ems-restore-database.sql.gz"
+
+RESTORE_ARGS=(bench --site "${SITE_NAME}" restore /tmp/ems-restore-database.sql.gz --force)
+
+if [[ -n "${PUBLIC_FILES}" ]]; then
+  docker compose cp "${PUBLIC_FILES}" "backend:/tmp/ems-restore-public-files.tar"
+  RESTORE_ARGS+=(--with-public-files /tmp/ems-restore-public-files.tar)
+fi
+
+if [[ -n "${PRIVATE_FILES}" ]]; then
+  docker compose cp "${PRIVATE_FILES}" "backend:/tmp/ems-restore-private-files.tar"
+  RESTORE_ARGS+=(--with-private-files /tmp/ems-restore-private-files.tar)
+fi
+
+docker compose exec backend "${RESTORE_ARGS[@]}"
+docker compose exec backend bench --site "${SITE_NAME}" migrate
+docker compose exec backend bench --site "${SITE_NAME}" clear-cache
+docker compose exec backend bench --site "${SITE_NAME}" clear-website-cache
+
+echo "Restore completed for ${SITE_NAME}."
