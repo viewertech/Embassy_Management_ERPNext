@@ -148,9 +148,11 @@ Set defaults for the mission:
 
 ```text
 DEFAULT_CURRENCY=USD
-DEFAULT_COUNTRY=United States
+DEFAULT_COUNTRY="United States"
 DEFAULT_TIMEZONE=Etc/UTC
 ```
+
+Values with spaces may be quoted. The maintenance scripts use a safe dotenv loader, so `DEFAULT_COUNTRY=United States` and `DEFAULT_COUNTRY="United States"` both work. Quoting is still recommended for readability.
 
 Use the free host port selected above:
 
@@ -749,11 +751,10 @@ docker compose exec backend bench --site "$SITE_NAME" migrate
 docker compose exec backend bench --site "$SITE_NAME" clear-cache
 ```
 
-If `$SITE_NAME` is not loaded in your shell:
+If `$SITE_NAME` is not loaded in your shell, pass it explicitly. Do not run `source .env` on files that contain unquoted values with spaces.
 
 ```bash
-source .env
-docker compose exec backend bench --site "$SITE_NAME" clear-cache
+docker compose exec backend bench --site your-site.example.org clear-cache
 ```
 
 Create an additional administrator:

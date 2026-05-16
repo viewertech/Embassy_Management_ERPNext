@@ -97,6 +97,8 @@ The default scripts read `.env` values:
 - `DEFAULT_COUNTRY`
 - `DEFAULT_TIMEZONE`
 
+Values with spaces can be quoted in `.env`, for example `DEFAULT_COUNTRY="United States"`. The scripts use a safe dotenv loader and do not execute `.env` as Bash.
+
 The create-site script calls Frappe bench inside the Docker backend container and installs ERPNext first, then `embassy_management`.
 
 ## App Installation
