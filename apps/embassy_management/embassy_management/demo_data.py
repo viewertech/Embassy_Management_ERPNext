@@ -36,10 +36,40 @@ DEMO_OFFICERS = (
     "emsdemo.supervisor@example.invalid",
 )
 
-PDF_BYTES = b"%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\ntrailer<</Root 1 0 R>>\n%%EOF\n"
 PNG_BYTES = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII="
 )
+
+
+def _build_demo_pdf_bytes(title):
+    text = f"{title} - presentation data only. Powered by Viewertech."
+    escaped = text.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+    stream = f"BT /F1 12 Tf 72 740 Td ({escaped}) Tj ET\n".encode()
+    objects = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>",
+        b"<< /Length %d >>\nstream\n" % len(stream) + stream + b"endstream",
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+    ]
+
+    output = bytearray(b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n")
+    offsets = [0]
+    for index, body in enumerate(objects, 1):
+        offsets.append(len(output))
+        output.extend(f"{index} 0 obj\n".encode())
+        output.extend(body)
+        output.extend(b"\nendobj\n")
+
+    startxref = len(output)
+    output.extend(f"xref\n0 {len(objects) + 1}\n".encode())
+    output.extend(b"0000000000 65535 f \n")
+    for offset in offsets[1:]:
+        output.extend(f"{offset:010d} 00000 n \n".encode())
+    output.extend(
+        f"trailer\n<< /Size {len(objects) + 1} /Root 1 0 R >>\nstartxref\n{startxref}\n%%EOF\n".encode()
+    )
+    return bytes(output)
 
 
 def load_sample_data():
@@ -650,7 +680,7 @@ def _save_demo_file(app, category, sequence):
     existing = frappe.db.exists("File", {"file_name": file_name})
     if existing:
         return frappe.get_doc("File", existing)
-    content = PNG_BYTES if extension == "png" else PDF_BYTES
+    content = PNG_BYTES if extension == "png" else _build_demo_pdf_bytes(file_name)
     return save_file(file_name, content, "Consular Application", app.name, folder="Home/Attachments", is_private=1)
 
 
