@@ -8,4 +8,6 @@ RUN chown -R frappe:frappe /home/frappe/frappe-bench/apps/embassy_management /ho
 
 USER frappe
 RUN cd /home/frappe/frappe-bench && \
+    ./env/bin/pip install --no-cache-dir --editable apps/embassy_management && \
+    ./env/bin/python -c "import embassy_management; print('Installed embassy_management', embassy_management.__version__)" && \
     if ! grep -qx "embassy_management" sites/apps.txt 2>/dev/null; then echo "embassy_management" >> sites/apps.txt; fi
