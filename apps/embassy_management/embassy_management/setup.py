@@ -12,6 +12,11 @@ ROLES = [
     "Head of Mission", "Embassy Administrator",
 ]
 
+APP_NAME = "embassy_management"
+APP_TITLE = "Embassy Management"
+APP_ROUTE = "/desk/embassy-management"
+APP_ICON = "/assets/embassy_management/img/app_icon.png"
+
 
 def create_admin_user(email, first_name="Embassy", last_name="Administrator", password=None):
     if frappe.db.exists("User", email):
@@ -38,6 +43,44 @@ def ensure_roles():
     for role_name in ROLES:
         if not frappe.db.exists("Role", role_name):
             frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert(ignore_permissions=True)
+
+
+def sync_desktop_integration():
+    if not frappe.db.table_exists("Desktop Icon"):
+        return
+
+    icon_name = (
+        frappe.db.exists("Desktop Icon", {"icon_type": "App", "app": APP_NAME})
+        or frappe.db.exists("Desktop Icon", {"label": APP_TITLE, "icon_type": "App"})
+        or frappe.db.exists("Desktop Icon", {"label": APP_TITLE})
+    )
+
+    values = {
+        "label": APP_TITLE,
+        "icon_type": "App",
+        "link_type": "External",
+        "app": APP_NAME,
+        "link": APP_ROUTE,
+        "logo_url": APP_ICON,
+        "standard": 1,
+        "hidden": 0,
+        "bg_color": "blue",
+    }
+
+    if icon_name:
+        icon = frappe.get_doc("Desktop Icon", icon_name)
+        dirty = False
+        for field, value in values.items():
+            if icon.get(field) != value:
+                icon.set(field, value)
+                dirty = True
+        if dirty:
+            icon.save(ignore_permissions=True)
+    else:
+        icon = frappe.get_doc({"doctype": "Desktop Icon", "name": APP_TITLE, **values})
+        icon.insert(ignore_permissions=True, ignore_if_duplicate=True)
+
+    frappe.clear_cache()
 
 
 def import_sample_data():

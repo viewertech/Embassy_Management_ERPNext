@@ -5,6 +5,19 @@ app_description = "Reusable ERPNext/Frappe Embassy Management System"
 app_email = "hello@viewertech.net"
 app_license = "MIT"
 required_apps = ["frappe", "erpnext"]
+app_logo_url = "/assets/embassy_management/img/app_icon.png"
+app_home = "/desk/embassy-management"
+after_install = "embassy_management.setup.sync_desktop_integration"
+after_migrate = "embassy_management.setup.sync_desktop_integration"
+
+add_to_apps_screen = [
+    {
+        "name": "embassy_management",
+        "logo": "/assets/embassy_management/img/app_icon.png",
+        "title": "Embassy Management",
+        "route": "/desk/embassy-management",
+    }
+]
 
 app_include_css = "/assets/embassy_management/css/embassy.css"
 app_include_js = "/assets/embassy_management/js/embassy.js"
