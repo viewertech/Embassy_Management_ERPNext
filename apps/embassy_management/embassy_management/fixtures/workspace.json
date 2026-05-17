@@ -5,6 +5,8 @@
     "label": "Embassy Management",
     "title": "Embassy Management",
     "module": "Embassy Management",
+    "app": "embassy_management",
+    "type": "Workspace",
     "public": 1,
     "for_user": "",
     "content": "[{\"type\": \"header\", \"data\": {\"text\": \"Embassy Management\"}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Consular Applications\"}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Officer Workbench\"}}]",
