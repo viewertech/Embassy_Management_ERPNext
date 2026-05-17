@@ -60,10 +60,16 @@ docker compose up -d
 ./scripts/install-apps.sh
 ```
 
-5. Import generic sample data when needed:
+5. Import generic presentation data when needed:
 
 ```bash
 ./scripts/load-sample-data.sh
+```
+
+The loader creates removable `EMSDEMO` records across the Embassy Management app and standard ERPNext masters: customers, contacts, addresses, suppliers, items, leads, projects, tasks, applicants, applications, appointments, document reviews, payment reviews, communications, and ToDos. Remove it after a presentation with:
+
+```bash
+./scripts/clear-sample-data.sh
 ```
 
 6. Repair asset links if the frontend serves stale assets after rebuilds:

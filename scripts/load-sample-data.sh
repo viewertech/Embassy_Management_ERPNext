@@ -13,7 +13,7 @@ YES="${1:-}"
 
 if [[ "${YES}" != "--yes" ]]; then
   echo "This will load EMSDEMO generic presentation data into ${SITE_NAME}."
-  echo "It first removes any existing EMSDEMO sample data, then creates fresh demo records."
+  echo "It first removes existing EMSDEMO/GEN sample data, then creates fresh EMS and ERPNext demo records."
   read -r -p "Type LOAD to continue: " CONFIRM
   if [[ "${CONFIRM}" != "LOAD" ]]; then
     echo "Cancelled."
@@ -25,4 +25,4 @@ docker compose exec backend bench --site "${SITE_NAME}" execute embassy_manageme
 docker compose exec backend bench --site "${SITE_NAME}" clear-cache
 docker compose exec backend bench --site "${SITE_NAME}" clear-website-cache
 
-echo "EMSDEMO sample data loaded for ${SITE_NAME}."
+echo "EMSDEMO EMS and ERPNext presentation data loaded for ${SITE_NAME}."

@@ -875,7 +875,7 @@ frappe.get_all("Embassy Applicant Profile", fields=["name", "user", "email"])
 
 ## 29. Presentation Sample Data
 
-For demonstrations, load removable `EMSDEMO` generic sample data covering standard consular service catalogue, document requirements, fee rules, and appointment slots:
+For demonstrations, load removable `EMSDEMO` generic sample data covering EMS services and standard ERPNext masters. The loader creates customers, contacts, addresses, suppliers, fee items, leads, projects, tasks, applicants, applications, appointments, document reviews, payment reviews, communications, and ToDos:
 
 ```bash
 ./scripts/load-sample-data.sh

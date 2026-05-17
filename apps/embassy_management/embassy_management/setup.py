@@ -15,7 +15,7 @@ ROLES = [
 APP_NAME = "embassy_management"
 APP_TITLE = "Embassy Management"
 APP_ROUTE = "/desk/embassy-management"
-APP_ICON = "/assets/embassy_management/img/app_icon.svg"
+APP_ICON = "/assets/embassy_management/img/app_icon.png"
 
 
 def create_admin_user(email, first_name="Embassy", last_name="Administrator", password=None):
@@ -62,6 +62,7 @@ def sync_desktop_integration():
         "app": APP_NAME,
         "link": APP_ROUTE,
         "logo_url": APP_ICON,
+        "icon_image": APP_ICON,
         "standard": 1,
         "hidden": 0,
         "bg_color": "blue",

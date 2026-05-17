@@ -21,3 +21,7 @@ Use ERPNext Items as fee products. Use Consular Fee Rule only for embassy-specif
 ## Appointments
 
 Configure Appointment Location, Appointment Service Type, Appointment Officer, and Appointment Slot. Slots can be used for internal booking or mapped to external booking references in Embassy Appointment.
+
+## Presentation Data
+
+Use `./scripts/load-sample-data.sh` to load removable `EMSDEMO` records across EMS and standard ERPNext masters for demonstrations. Use `./scripts/clear-sample-data.sh` after the presentation to remove the tagged sample data without touching real mission records.
