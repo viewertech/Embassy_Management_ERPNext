@@ -15,7 +15,7 @@ ROLES = [
 APP_NAME = "embassy_management"
 APP_TITLE = "Embassy Management"
 APP_ROUTE = "/desk/embassy-management"
-APP_ICON = "/assets/embassy_management/img/app_icon.png"
+APP_ICON = "/assets/embassy_management/img/app_icon.svg"
 
 
 def create_admin_user(email, first_name="Embassy", last_name="Administrator", password=None):

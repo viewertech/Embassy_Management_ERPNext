@@ -1,0 +1,47 @@
+{
+  "creation": "2026-05-17 00:00:00",
+  "docstatus": 0,
+  "doctype": "Page",
+  "idx": 0,
+  "modified": "2026-05-17 00:00:00",
+  "modified_by": "Administrator",
+  "module": "Embassy Management",
+  "name": "embassy-management",
+  "owner": "Administrator",
+  "page_name": "embassy-management",
+  "roles": [
+    {
+      "role": "Consular Officer"
+    },
+    {
+      "role": "Visa Officer"
+    },
+    {
+      "role": "Passport Officer"
+    },
+    {
+      "role": "Appointment Officer"
+    },
+    {
+      "role": "Cashier / Finance Officer"
+    },
+    {
+      "role": "Consular Supervisor"
+    },
+    {
+      "role": "Head of Consular Section"
+    },
+    {
+      "role": "Head of Mission"
+    },
+    {
+      "role": "Embassy Administrator"
+    },
+    {
+      "role": "System Manager"
+    }
+  ],
+  "standard": "Yes",
+  "system_page": 0,
+  "title": "Embassy Management"
+}

@@ -1,3 +1,93 @@
 .workspace-sidebar .standard-sidebar-item[data-title="Embassy Management"] {
   border-left: 3px solid #144870;
 }
+
+.ems-home {
+  color: #172033;
+}
+
+.ems-home-hero {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #dde4ee;
+  border-radius: 8px;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 112px 1fr;
+  margin-bottom: 20px;
+  padding: 24px;
+}
+
+.ems-home-icon {
+  height: 96px;
+  width: 96px;
+}
+
+.ems-home-kicker {
+  color: #b57b16;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.ems-home-hero h2 {
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+.ems-home-hero p {
+  color: #526173;
+  font-size: 15px;
+  margin: 0;
+  max-width: 860px;
+}
+
+.ems-home-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.ems-home-card {
+  background: #fff;
+  border: 1px solid #dde4ee;
+  border-radius: 8px;
+  min-height: 116px;
+  padding: 18px;
+  text-align: left;
+}
+
+.ems-home-card:hover {
+  border-color: #144870;
+  box-shadow: 0 10px 28px rgba(15, 32, 48, .08);
+}
+
+.ems-home-card strong {
+  color: #144870;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.ems-home-card span {
+  color: #526173;
+  display: block;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ems-home-footer {
+  font-size: 12px;
+  margin-top: 18px;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .ems-home-hero {
+    grid-template-columns: 1fr;
+  }
+}
