@@ -1,51 +1,61 @@
 [
   {
     "doctype": "Role",
+    "name": "Applicant",
     "role_name": "Applicant",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Consular Officer",
     "role_name": "Consular Officer",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Visa Officer",
     "role_name": "Visa Officer",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Passport Officer",
     "role_name": "Passport Officer",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Appointment Officer",
     "role_name": "Appointment Officer",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Cashier / Finance Officer",
     "role_name": "Cashier / Finance Officer",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Consular Supervisor",
     "role_name": "Consular Supervisor",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Head of Consular Section",
     "role_name": "Head of Consular Section",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Head of Mission",
     "role_name": "Head of Mission",
     "desk_access": 1
   },
   {
     "doctype": "Role",
+    "name": "Embassy Administrator",
     "role_name": "Embassy Administrator",
     "desk_access": 1
   }
