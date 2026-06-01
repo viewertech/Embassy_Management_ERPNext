@@ -94,5 +94,6 @@
   "sort_order": "DESC",
   "states": [],
   "autoname": "field:location_name",
-  "title_field": "location_name"
+  "title_field": "location_name",
+  "show_title_field_in_link": 1
 }

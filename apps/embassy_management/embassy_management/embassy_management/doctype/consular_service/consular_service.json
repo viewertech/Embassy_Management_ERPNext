@@ -247,5 +247,6 @@
   "states": [],
   "autoname": "field:service_code",
   "title_field": "service_name",
-  "search_fields": "service_name,service_code,service_category"
+  "search_fields": "service_name,service_code,service_category",
+  "show_title_field_in_link": 1
 }

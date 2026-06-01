@@ -22,32 +22,41 @@
       "fieldtype": "Link",
       "label": "Application",
       "options": "Consular Application",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "service",
       "fieldtype": "Link",
       "label": "Service",
-      "options": "Consular Service"
+      "options": "Consular Service",
+      "in_list_view": 1
     },
     {
       "fieldname": "document_category",
       "fieldtype": "Select",
       "label": "Document Category",
       "options": "Photo\nPassport\nProof of Address\nEmployment Letter\nInvitation Letter\nFlight Ticket\nYellow Fever Certificate\nSignature\nOther Documents",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "requirement_label",
       "fieldtype": "Data",
       "label": "Requirement Label",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "bold": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "mandatory",
       "fieldtype": "Check",
       "label": "Mandatory",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "allowed_file_types",
@@ -182,5 +191,7 @@
   "sort_field": "modified",
   "sort_order": "DESC",
   "states": [],
-  "title_field": "requirement_label"
+  "title_field": "requirement_label",
+  "show_title_field_in_link": 1,
+  "search_fields": "requirement_label,application,service,document_category"
 }

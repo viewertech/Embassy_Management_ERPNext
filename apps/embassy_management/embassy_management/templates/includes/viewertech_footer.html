@@ -1,4 +1,5 @@
+{% set footer_brand = brand | default({}) %}
 <footer class="ems-footer">
-  <span>{{ brand.footer }}</span>
-  <a href="{{ brand.viewertech_url }}" rel="noopener" target="_blank">Powered by Viewertech</a>
+  <span>{{ footer_brand.footer or "Powered by Viewertech" }}</span>
+  <a href="{{ footer_brand.viewertech_url or 'https://viewertech.net' }}" rel="noopener" target="_blank">Powered by Viewertech</a>
 </footer>

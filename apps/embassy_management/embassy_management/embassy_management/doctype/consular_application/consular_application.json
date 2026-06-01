@@ -62,14 +62,19 @@
       "fieldtype": "Data",
       "label": "Application Number",
       "read_only": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "bold": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "applicant",
       "fieldtype": "Link",
       "label": "Applicant",
       "options": "Embassy Applicant Profile",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "customer",
@@ -88,7 +93,9 @@
       "fieldtype": "Link",
       "label": "Service",
       "options": "Consular Service",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "embassy_mission",
@@ -106,14 +113,17 @@
       "label": "Application Status",
       "options": "Draft\nSubmitted\nPayment Pending\nPayment Confirmed\nAppointment Required\nAppointment Booked\nUnder Initial Review\nAwaiting Additional Documents\nAwaiting Interview\nUnder Officer Review\nApproved\nRejected\nCancelled\nCompleted\nCollected / Dispatched",
       "default": "Draft",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "priority",
       "fieldtype": "Select",
       "label": "Priority",
       "options": "Normal\nUrgent\nEmergency",
-      "default": "Normal"
+      "default": "Normal",
+      "in_list_view": 1
     },
     {
       "fieldname": "submission_channel",
@@ -156,7 +166,8 @@
       "fieldtype": "Select",
       "label": "Payment Status",
       "options": "Not Required\nPayment Pending\nPayment Under Review\nPayment Confirmed\nPartially Refunded\nRefunded\nFailed",
-      "default": "Payment Pending"
+      "default": "Payment Pending",
+      "in_list_view": 1
     },
     {
       "fieldname": "sales_invoice",
@@ -179,7 +190,8 @@
       "fieldname": "assigned_officer",
       "fieldtype": "Link",
       "label": "Assigned Officer",
-      "options": "User"
+      "options": "User",
+      "in_list_view": 1
     },
     {
       "fieldname": "review_status",
@@ -372,5 +384,6 @@
   "states": [],
   "autoname": "naming_series:",
   "title_field": "application_number",
-  "search_fields": "application_number,applicant,service,application_status,booking_code"
+  "search_fields": "application_number,applicant,service,application_status,booking_code",
+  "show_title_field_in_link": 1
 }

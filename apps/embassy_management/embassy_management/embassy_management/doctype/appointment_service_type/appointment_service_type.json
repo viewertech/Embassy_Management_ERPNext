@@ -103,5 +103,6 @@
   "sort_order": "DESC",
   "states": [],
   "autoname": "field:service_type_name",
-  "title_field": "service_type_name"
+  "title_field": "service_type_name",
+  "show_title_field_in_link": 1
 }

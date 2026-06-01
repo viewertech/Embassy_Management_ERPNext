@@ -1,11 +1,12 @@
 {% extends "templates/web.html" %}
 {% block page_content %}
-<main class="ems-public" style="--ems-primary: {{ brand.primary_colour }}; --ems-secondary: {{ brand.secondary_colour }};">
+{% set portal_brand = brand | default({}) %}
+<main class="ems-public" style="--ems-primary: {{ portal_brand.primary_colour or '#144870' }}; --ems-secondary: {{ portal_brand.secondary_colour or '#e6b654' }};">
   <nav class="ems-public-nav" aria-label="{{ _('Consular portal navigation') }}">
     <a class="ems-public-brand" href="/embassy">
       <img src="/assets/embassy_management/img/app_icon.png" alt="EMS">
       <span>
-        <strong>{{ brand.mission_name }}</strong>
+        <strong>{{ portal_brand.mission_name or _("Embassy Management") }}</strong>
         <span>{{ _("Embassy Management Portal") }}</span>
       </span>
     </a>
@@ -19,7 +20,7 @@
   <section class="ems-portal-hero">
     <div class="ems-hero-copy">
       <p class="ems-kicker">{{ _("Consular Portal") }}</p>
-      <h1>{{ brand.mission_name }}</h1>
+      <h1>{{ portal_brand.mission_name or _("Embassy Management") }}</h1>
       <p>{{ _("Start applications, check requirements, manage appointments, and track consular cases securely.") }}</p>
       <div class="ems-actions">
         <a class="btn btn-primary" href="/embassy/apply">{{ _("Start Application") }}</a>

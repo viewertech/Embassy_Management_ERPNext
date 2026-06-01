@@ -37,7 +37,10 @@
       "fieldtype": "Data",
       "label": "Booking Code",
       "read_only": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "bold": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "application",
@@ -49,13 +52,17 @@
       "fieldname": "applicant",
       "fieldtype": "Link",
       "label": "Applicant",
-      "options": "Embassy Applicant Profile"
+      "options": "Embassy Applicant Profile",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "service",
       "fieldtype": "Link",
       "label": "Service",
-      "options": "Consular Service"
+      "options": "Consular Service",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "appointment_service_type",
@@ -67,7 +74,8 @@
       "fieldname": "location",
       "fieldtype": "Link",
       "label": "Location",
-      "options": "Appointment Location"
+      "options": "Appointment Location",
+      "in_list_view": 1
     },
     {
       "fieldname": "officer",
@@ -85,13 +93,16 @@
       "fieldname": "appointment_date",
       "fieldtype": "Date",
       "label": "Appointment Date",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "start_time",
       "fieldtype": "Time",
       "label": "Start Time",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "end_time",
@@ -103,7 +114,9 @@
       "fieldtype": "Select",
       "label": "Status",
       "options": "Draft\nBooked\nConfirmed\nRescheduled\nCancelled\nCompleted\nNo-show\nWalk-in",
-      "default": "Booked"
+      "default": "Booked",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "external_appointment_reference",
@@ -238,5 +251,6 @@
   "states": [],
   "autoname": "naming_series:",
   "title_field": "booking_code",
-  "search_fields": "booking_code,application,applicant,service,status"
+  "search_fields": "booking_code,application,applicant,service,status",
+  "show_title_field_in_link": 1
 }

@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "slot_label",
     "service",
     "appointment_service_type",
     "location",
@@ -20,10 +21,21 @@
   ],
   "fields": [
     {
+      "fieldname": "slot_label",
+      "fieldtype": "Data",
+      "label": "Slot Label",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "service",
       "fieldtype": "Link",
       "label": "Service",
-      "options": "Consular Service"
+      "options": "Consular Service",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "appointment_service_type",
@@ -36,7 +48,9 @@
       "fieldtype": "Link",
       "label": "Location",
       "options": "Appointment Location",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "officer",
@@ -48,38 +62,45 @@
       "fieldname": "slot_date",
       "fieldtype": "Date",
       "label": "Slot Date",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "from_time",
       "fieldtype": "Time",
       "label": "From Time",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "to_time",
       "fieldtype": "Time",
       "label": "To Time",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "capacity",
       "fieldtype": "Int",
       "label": "Capacity",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "booked_count",
       "fieldtype": "Int",
       "label": "Booked Count",
       "default": 0,
-      "read_only": 1
+      "read_only": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "active",
       "fieldtype": "Check",
       "label": "Active",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "exclude_public_holiday",
@@ -136,8 +157,10 @@
       "email": 1
     }
   ],
-  "sort_field": "modified",
-  "sort_order": "DESC",
+  "sort_field": "slot_date",
+  "sort_order": "ASC",
   "states": [],
-  "search_fields": "service,location,slot_date,from_time"
+  "search_fields": "slot_label,service,location,appointment_service_type,slot_date,from_time",
+  "title_field": "slot_label",
+  "show_title_field_in_link": 1
 }

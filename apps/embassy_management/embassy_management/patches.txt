@@ -1,3 +1,4 @@
 embassy_management.patches.v1_0.create_roles
 embassy_management.patches.v1_0.create_generic_workflow
 embassy_management.patches.v1_0.create_email_templates
+embassy_management.patches.v1_0.backfill_display_titles
