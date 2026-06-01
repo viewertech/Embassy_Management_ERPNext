@@ -18,5 +18,6 @@ docker compose up -d
 docker compose exec backend bench --site "${SITE_NAME}" migrate
 docker compose exec backend bench --site "${SITE_NAME}" clear-cache
 docker compose exec backend bench --site "${SITE_NAME}" clear-website-cache
+"${ROOT_DIR}/scripts/repair-assets.sh"
 
 echo "Update completed for ${SITE_NAME}."

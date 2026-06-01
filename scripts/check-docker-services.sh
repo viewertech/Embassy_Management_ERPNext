@@ -47,4 +47,18 @@ for host, port in targets:
         print(f"OK frontend -> {host}:{port}")
 PY'
 
+echo "Checking EMS static assets in frontend container..."
+docker compose exec -T frontend bash -lc '
+set -euo pipefail
+cd /home/frappe/frappe-bench
+for path in \
+  assets/embassy_management/js/embassy.js \
+  assets/embassy_management/css/embassy.css \
+  assets/embassy_management/img/app_icon.png
+do
+  test -f "${path}"
+  echo "OK frontend asset ${path}"
+done
+'
+
 echo "Docker service communication checks passed. Powered by Viewertech: https://viewertech.net"

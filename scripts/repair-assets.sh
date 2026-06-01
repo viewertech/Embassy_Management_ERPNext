@@ -10,7 +10,11 @@ load_env_file ".env"
 
 SITE_NAME="${SITE_NAME:-embassy.localhost}"
 
-docker compose exec backend bash -lc '
+sync_container_assets() {
+  local service="$1"
+
+  echo "Repairing asset links in ${service}..."
+  docker compose exec -T "${service}" bash -lc '
 set -euo pipefail
 cd /home/frappe/frappe-bench
 
@@ -27,13 +31,42 @@ ls -1 apps > sites/apps.txt
 for app in $(ls -1 apps); do
   public="apps/${app}/${app}/public"
   if [ -d "${public}" ]; then
-    if [ -e "assets/${app}" ] && [ ! -L "assets/${app}" ]; then
+    if [ -L "assets/${app}" ] || [ -f "assets/${app}" ]; then
+      rm -f "assets/${app}"
+    elif [ -d "assets/${app}" ]; then
       mv "assets/${app}" "assets/${app}.bak.${timestamp}"
     fi
-    rm -f "assets/${app}"
     ln -s "../${public}" "assets/${app}"
   fi
 done
+
+if [ ! -f assets/embassy_management/js/embassy.js ]; then
+  echo "Missing EMS JS asset in ${HOSTNAME}: assets/embassy_management/js/embassy.js" >&2
+  exit 1
+fi
+
+if [ ! -f assets/embassy_management/css/embassy.css ]; then
+  echo "Missing EMS CSS asset in ${HOSTNAME}: assets/embassy_management/css/embassy.css" >&2
+  exit 1
+fi
+
+if [ ! -f assets/embassy_management/img/app_icon.png ]; then
+  echo "Missing EMS icon asset in ${HOSTNAME}: assets/embassy_management/img/app_icon.png" >&2
+  exit 1
+fi
+
+echo "Asset links:"
+ls -ld sites/assets assets/frappe assets/erpnext assets/embassy_management 2>/dev/null || true
+'
+}
+
+repair_manifest() {
+  local service="$1"
+
+  echo "Repairing asset manifest in ${service}..."
+  docker compose exec -T "${service}" bash -lc '
+set -euo pipefail
+cd /home/frappe/frappe-bench
 
 ./env/bin/python - <<PY
 import json
@@ -76,54 +109,74 @@ def link_compatibility_name(missing_path, target_path):
     return True
 
 
-if manifest.exists():
-    data = json.loads(manifest.read_text())
-    updated = 0
-    linked = 0
+if not manifest.exists():
+    print("Asset manifest not found; skipped.")
+    raise SystemExit
 
-    for key, value in list(data.items()):
-        if not isinstance(value, str):
-            continue
+data = json.loads(manifest.read_text())
+updated = 0
+linked = 0
 
-        missing_path, prefix = asset_path(value)
-        if missing_path.exists():
-            continue
+for key, value in list(data.items()):
+    if not isinstance(value, str):
+        continue
 
-        match = hash_pattern.match(missing_path.name)
-        if not match or not missing_path.parent.exists():
-            continue
+    missing_path, prefix = asset_path(value)
+    if missing_path.exists():
+        continue
 
-        bundle_prefix = match.group("prefix")
-        bundle_suffix = match.group("suffix")
-        candidates = [
-            candidate
-            for candidate in missing_path.parent.glob(f"{bundle_prefix}.*{bundle_suffix}")
-            if candidate.name != missing_path.name and candidate.is_file() and not candidate.name.endswith(".map")
-        ]
-        if not candidates:
-            continue
+    match = hash_pattern.match(missing_path.name)
+    if not match or not missing_path.parent.exists():
+        continue
 
-        replacement = sorted(candidates, key=lambda item: (item.stat().st_mtime, item.name), reverse=True)[0]
-        data[key] = asset_value(replacement, prefix)
-        updated += 1
-        if link_compatibility_name(missing_path, replacement):
-            linked += 1
+    bundle_prefix = match.group("prefix")
+    bundle_suffix = match.group("suffix")
+    candidates = [
+        candidate
+        for candidate in missing_path.parent.glob(f"{bundle_prefix}.*{bundle_suffix}")
+        if candidate.name != missing_path.name and candidate.is_file() and not candidate.name.endswith(".map")
+    ]
+    if not candidates:
+        continue
 
-    if updated:
-        manifest.write_text(json.dumps(data, indent=1, sort_keys=True) + "\n")
-    print(f"Asset manifest repaired: {updated} stale entries updated, {linked} compatibility links created.")
+    replacement = sorted(candidates, key=lambda item: (item.stat().st_mtime, item.name), reverse=True)[0]
+    data[key] = asset_value(replacement, prefix)
+    updated += 1
+    if link_compatibility_name(missing_path, replacement):
+        linked += 1
+
+if updated:
+    manifest.write_text(json.dumps(data, indent=1, sort_keys=True) + "\n")
+print(f"Asset manifest repaired: {updated} stale entries updated, {linked} compatibility links created.")
 PY
-
-echo "Asset links:"
-ls -ld sites/assets assets/frappe assets/erpnext assets/embassy_management 2>/dev/null || true
-if [ -f assets/assets.json ]; then
-  echo "Current asset manifest:"
-  grep -o "website.bundle.[A-Z0-9]*.css" assets/assets.json | head -1 || true
-  grep -o "login.bundle.[A-Z0-9]*.css" assets/assets.json | head -1 || true
-fi
 '
+}
 
-docker compose exec redis-cache redis-cli FLUSHALL
-docker compose exec backend bench --site "${SITE_NAME}" clear-cache
-docker compose exec backend bench --site "${SITE_NAME}" clear-website-cache
+sync_container_assets backend
+sync_container_assets frontend
+repair_manifest frontend
+
+docker compose exec -T redis-cache redis-cli FLUSHALL
+docker compose exec -T backend bench --site "${SITE_NAME}" clear-cache
+docker compose exec -T backend bench --site "${SITE_NAME}" clear-website-cache
 docker compose restart backend frontend websocket queue-short queue-long scheduler
+
+echo "Checking EMS asset URLs through the published frontend..."
+HTTP_PUBLISH_PORT="${HTTP_PUBLISH_PORT:-8091}"
+for asset in \
+  /assets/embassy_management/js/embassy.js \
+  /assets/embassy_management/css/embassy.css \
+  /assets/embassy_management/img/app_icon.png
+do
+  for attempt in $(seq 1 30); do
+    if curl -fsSI "http://127.0.0.1:${HTTP_PUBLISH_PORT}${asset}" >/dev/null; then
+      echo "OK ${asset}"
+      break
+    fi
+    if [ "${attempt}" -eq 30 ]; then
+      echo "Asset URL still unavailable: ${asset}" >&2
+      exit 1
+    fi
+    sleep 2
+  done
+done

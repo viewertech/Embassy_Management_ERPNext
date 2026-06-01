@@ -20,7 +20,7 @@ This guide targets Ubuntu 24.04 LTS, Docker Compose, ERPNext v16, Frappe v16, an
 - `install.sh` prepares an Ubuntu 24.04 LTS host with Docker and Docker Compose.
 - `create-site.sh` builds the backend image, starts all services, creates the site if missing, repairs bench Docker settings, and calls `install-apps.sh`.
 - `install-apps.sh` installs the apps listed in `INSTALL_APPS`, then migrates and clears caches.
-- `repair-assets.sh` rebuilds the Frappe asset symlink layout and repairs stale bundle entries.
+- `repair-assets.sh` rebuilds the Frappe asset symlink layout in both backend and frontend containers, repairs stale bundle entries, and verifies EMS asset URLs.
 - `check-docker-services.sh` validates Docker Compose configuration and container-to-container connectivity.
 - `load-sample-data.sh` loads generic EMSDEMO presentation records.
 - `clear-sample-data.sh` removes only EMSDEMO/GEN sample records.
