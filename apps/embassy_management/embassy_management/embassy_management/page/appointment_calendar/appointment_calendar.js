@@ -1,5 +1,5 @@
 frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
-  const ui = window.embassy_management && embassy_management.ui ? embassy_management.ui : {
+  const ui = window.embassy_management && window.embassy_management.ui ? window.embassy_management.ui : {
     appIcon: '/assets/embassy_management/img/app_icon.png',
     escape: (value) => frappe.utils.escape_html(value == null ? '' : String(value)),
     icon: () => '',

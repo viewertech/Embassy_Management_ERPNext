@@ -1,16 +1,32 @@
-frappe.provide('embassy_management');
+(function (root) {
+  root.embassy_management = root.embassy_management || {};
 
-embassy_management.ui = {
+  const getFrappe = () => root.frappe || {};
+  const escapeHtml = (value) => {
+    const frappeObj = getFrappe();
+    if (frappeObj.utils && frappeObj.utils.escape_html) {
+      return frappeObj.utils.escape_html(value == null ? '' : String(value));
+    }
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  root.embassy_management.ui = {
   appIcon: '/assets/embassy_management/img/app_icon.png',
 
   escape(value) {
-    return frappe.utils.escape_html(value == null ? '' : String(value));
+    return escapeHtml(value);
   },
 
   icon(name, size = 'md') {
-    if (frappe.utils && frappe.utils.icon) {
+    const frappeObj = getFrappe();
+    if (frappeObj.utils && frappeObj.utils.icon) {
       try {
-        return frappe.utils.icon(name, size);
+        return frappeObj.utils.icon(name, size);
       } catch (error) {
         return '';
       }
@@ -389,4 +405,5 @@ embassy_management.ui = {
     `;
     document.head.appendChild(style);
   }
-};
+  };
+})(window);
