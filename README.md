@@ -78,7 +78,13 @@ The loader creates removable `EMSDEMO` records across the Embassy Management app
 ./scripts/repair-assets.sh
 ```
 
-7. Open the site:
+7. Check Docker service communication:
+
+```bash
+./scripts/check-docker-services.sh
+```
+
+8. Open the site:
 
 ```text
 http://localhost:8091

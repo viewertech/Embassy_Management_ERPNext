@@ -20,9 +20,9 @@ x-backend-defaults: &backend_defaults
     mariadb:
       condition: service_healthy
     redis-cache:
-      condition: service_started
+      condition: service_healthy
     redis-queue:
-      condition: service_started
+      condition: service_healthy
 
 services:
   mariadb:
@@ -44,32 +44,64 @@ services:
   redis-cache:
     image: redis:7-alpine
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
 
   redis-queue:
     image: redis:7-alpine
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
 
   configurator:
     <<: *backend_defaults
     restart: "no"
     entrypoint: ["bash", "-lc"]
+    environment:
+      DB_HOST: ${DB_HOST:-mariadb}
+      DB_PORT: ${DB_PORT:-3306}
+      SOCKETIO_PORT: ${SOCKETIO_PORT:-9000}
     command: >
-      "bench set-config -g db_host mariadb &&
+      bench set-config -g db_host "$${DB_HOST:-mariadb}" &&
+       bench set-config -g db_port "$${DB_PORT:-3306}" &&
        bench set-config -g redis_cache redis://redis-cache:6379 &&
        bench set-config -g redis_queue redis://redis-queue:6379 &&
        bench set-config -g redis_socketio redis://redis-queue:6379 &&
-       bench set-config -g socketio_port 9000"
+       bench set-config -g socketio_port "$${SOCKETIO_PORT:-9000}"
 
   backend:
     <<: *backend_defaults
     command: ["bench", "serve", "--port", "8000"]
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.create_connection(('127.0.0.1', 8000), 5); s.close()\""]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
 
   frontend:
     <<: *backend_defaults
     command: ["nginx-entrypoint.sh"]
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+      redis-queue:
+        condition: service_healthy
+      backend:
+        condition: service_started
+      websocket:
+        condition: service_started
     environment:
       BACKEND: backend:8000
-      SOCKETIO: websocket:9000
+      SOCKETIO: websocket:${SOCKETIO_PORT:-9000}
       FRAPPE_SITE_NAME_HEADER: ${FRAPPE_SITE_NAME_HEADER:-embassy.localhost}
       UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
       UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
@@ -78,10 +110,22 @@ services:
       CLIENT_MAX_BODY_SIZE: 50m
     ports:
       - "${HTTP_PUBLISH_PORT:-8091}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import socket; s=socket.create_connection(('127.0.0.1', 8080), 5); s.close()\""]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
 
   websocket:
     <<: *backend_defaults
     command: ["node", "/home/frappe/frappe-bench/apps/frappe/socketio.js"]
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import os, socket; s=socket.create_connection(('127.0.0.1', int(os.environ.get('SOCKETIO_PORT', '9000'))), 5); s.close()\""]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
 
   queue-short:
     <<: *backend_defaults

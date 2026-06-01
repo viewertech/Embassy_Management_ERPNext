@@ -19,10 +19,10 @@ add_to_apps_screen = [
     }
 ]
 
-app_include_css = "/assets/embassy_management/css/embassy.css"
-app_include_js = "/assets/embassy_management/js/embassy.js"
-web_include_css = "/assets/embassy_management/css/portal.css"
-web_include_js = "/assets/embassy_management/js/portal.js"
+app_include_css = ["/assets/embassy_management/css/embassy.css"]
+app_include_js = ["/assets/embassy_management/js/embassy.js"]
+web_include_css = ["/assets/embassy_management/css/portal.css"]
+web_include_js = ["/assets/embassy_management/js/portal.js"]
 
 website_route_rules = [
     {"from_route": "/embassy/<path:app_path>", "to_route": "embassy"},

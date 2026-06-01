@@ -1,9 +1,25 @@
 {% extends "templates/web.html" %}
 {% block page_content %}
 <main class="ems-public ems-page" style="--ems-primary: {{ brand.primary_colour }}; --ems-secondary: {{ brand.secondary_colour }};">
+  <nav class="ems-public-nav" aria-label="{{ _('Consular portal navigation') }}">
+    <a class="ems-public-brand" href="/embassy">
+      <img src="/assets/embassy_management/img/app_icon.png" alt="EMS">
+      <span>
+        <strong>{{ brand.mission_name }}</strong>
+        <span>{{ _("Embassy Management Portal") }}</span>
+      </span>
+    </a>
+    <div class="ems-public-links">
+      <a href="/embassy/requirements">{{ _("Requirements") }}</a>
+      <a href="/embassy/apply">{{ _("Apply") }}</a>
+      <a href="/embassy/dashboard">{{ _("Dashboard") }}</a>
+      <a href="/login">{{ _("Login") }}</a>
+    </div>
+  </nav>
   <header class="ems-page-header">
     <p class="ems-kicker">{{ _("Consular Portal") }}</p>
     <h1>{{ _("Online Application") }}</h1>
+    <p>{{ _("Draft, review, document upload, declaration, payment, and appointment flow.") }}</p>
   </header>
   <section class="ems-app-shell" data-ems-page="apply">
     <div class="ems-stepper" aria-label="Application sections">

@@ -811,6 +811,12 @@ docker compose run --rm configurator
 
 Then refresh the browser with `Ctrl+F5`.
 
+To verify container-to-container communication after a rebuild:
+
+```bash
+./scripts/check-docker-services.sh
+```
+
 If files do not upload, check disk space and nginx upload size:
 
 ```bash

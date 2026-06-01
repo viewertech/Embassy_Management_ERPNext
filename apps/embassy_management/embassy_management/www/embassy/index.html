@@ -1,8 +1,23 @@
 {% extends "templates/web.html" %}
 {% block page_content %}
 <main class="ems-public" style="--ems-primary: {{ brand.primary_colour }}; --ems-secondary: {{ brand.secondary_colour }};">
-  <section class="ems-hero">
-    <div>
+  <nav class="ems-public-nav" aria-label="{{ _('Consular portal navigation') }}">
+    <a class="ems-public-brand" href="/embassy">
+      <img src="/assets/embassy_management/img/app_icon.png" alt="EMS">
+      <span>
+        <strong>{{ brand.mission_name }}</strong>
+        <span>{{ _("Embassy Management Portal") }}</span>
+      </span>
+    </a>
+    <div class="ems-public-links">
+      <a href="/embassy/requirements">{{ _("Requirements") }}</a>
+      <a href="/embassy/apply">{{ _("Apply") }}</a>
+      <a href="/embassy/dashboard">{{ _("Dashboard") }}</a>
+      <a href="/login">{{ _("Login") }}</a>
+    </div>
+  </nav>
+  <section class="ems-portal-hero">
+    <div class="ems-hero-copy">
       <p class="ems-kicker">{{ _("Consular Portal") }}</p>
       <h1>{{ brand.mission_name }}</h1>
       <p>{{ _("Start applications, check requirements, manage appointments, and track consular cases securely.") }}</p>
@@ -11,8 +26,20 @@
         <a class="btn btn-outline-primary" href="/embassy/requirements">{{ _("Check Requirements") }}</a>
       </div>
     </div>
+    <figure class="ems-hero-media">
+      <img src="/assets/embassy_management/img/app_icon.png" alt="EMS">
+    </figure>
   </section>
-  <section class="ems-service-grid" id="ems-services"></section>
+  <section class="ems-service-band">
+    <div class="ems-section-title">
+      <div>
+        <p class="ems-kicker">{{ _("Services") }}</p>
+        <h2>{{ _("Consular services") }}</h2>
+        <p>{{ _("Available online services configured by the mission.") }}</p>
+      </div>
+    </div>
+    <div class="ems-service-grid" id="ems-services"></div>
+  </section>
   {% include "embassy_management/templates/includes/viewertech_footer.html" %}
 </main>
 {% endblock %}
