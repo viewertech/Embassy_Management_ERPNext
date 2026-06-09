@@ -20,25 +20,33 @@
       "fieldtype": "Link",
       "label": "Template",
       "options": "Application Form Template",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "section_key",
       "fieldtype": "Data",
       "label": "Section Key",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "title",
       "fieldtype": "Data",
       "label": "Title",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "bold": 1
     },
     {
       "fieldname": "sequence",
       "fieldtype": "Int",
       "label": "Sequence",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "icon",
@@ -48,7 +56,9 @@
     {
       "fieldname": "standard_section",
       "fieldtype": "Check",
-      "label": "Standard Section"
+      "label": "Standard Section",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "help_text",
@@ -108,5 +118,6 @@
   "sort_order": "DESC",
   "states": [],
   "title_field": "title",
-  "search_fields": "title,section_key,template"
+  "search_fields": "title,section_key,template",
+  "show_title_field_in_link": 1
 }

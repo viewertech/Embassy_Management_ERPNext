@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "details_title",
     "consular_application",
     "visa_type",
     "entry_type",
@@ -30,24 +31,39 @@
   ],
   "fields": [
     {
+      "fieldname": "details_title",
+      "fieldtype": "Data",
+      "label": "Details Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "consular_application",
       "fieldtype": "Link",
       "label": "Consular Application",
       "options": "Consular Application",
       "reqd": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "visa_type",
       "fieldtype": "Select",
       "label": "Visa Type",
-      "options": "Tourist\nBusiness\nFamily Visit\nOfficial\nDiplomatic\nTransit\nStudent\nWork\nOther"
+      "options": "Tourist\nBusiness\nFamily Visit\nOfficial\nDiplomatic\nTransit\nStudent\nWork\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "entry_type",
       "fieldtype": "Select",
       "label": "Entry Type",
-      "options": "Single\nMultiple\nTransit"
+      "options": "Single\nMultiple\nTransit",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "purpose_of_travel",
@@ -57,12 +73,14 @@
     {
       "fieldname": "intended_date_of_entry",
       "fieldtype": "Date",
-      "label": "Intended Date of Entry"
+      "label": "Intended Date of Entry",
+      "in_list_view": 1
     },
     {
       "fieldname": "intended_date_of_exit",
       "fieldtype": "Date",
-      "label": "Intended Date of Exit"
+      "label": "Intended Date of Exit",
+      "in_list_view": 1
     },
     {
       "fieldname": "point_of_entry",
@@ -249,5 +267,7 @@
   "sort_field": "modified",
   "sort_order": "DESC",
   "states": [],
-  "title_field": "consular_application"
+  "title_field": "details_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "details_title,consular_application,visa_type,entry_type"
 }

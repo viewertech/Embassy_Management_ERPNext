@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "details_title",
     "consular_application",
     "current_nationality",
     "nationality_at_birth",
@@ -17,24 +18,39 @@
   ],
   "fields": [
     {
+      "fieldname": "details_title",
+      "fieldtype": "Data",
+      "label": "Details Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "consular_application",
       "fieldtype": "Link",
       "label": "Consular Application",
       "options": "Consular Application",
       "reqd": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "current_nationality",
       "fieldtype": "Link",
       "label": "Current Nationality",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "nationality_at_birth",
       "fieldtype": "Link",
       "label": "Nationality at Birth",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "place_of_birth",
@@ -55,12 +71,14 @@
     {
       "fieldname": "diaspora_registration_number",
       "fieldtype": "Data",
-      "label": "Diaspora Registration Number"
+      "label": "Diaspora Registration Number",
+      "in_list_view": 1
     },
     {
       "fieldname": "card_validity",
       "fieldtype": "Data",
-      "label": "Card Validity"
+      "label": "Card Validity",
+      "in_list_view": 1
     }
   ],
   "index_web_pages_for_search": 1,
@@ -171,5 +189,8 @@
   ],
   "sort_field": "modified",
   "sort_order": "DESC",
-  "states": []
+  "states": [],
+  "title_field": "details_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "details_title,consular_application,current_nationality,nationality_at_birth,diaspora_registration_number"
 }

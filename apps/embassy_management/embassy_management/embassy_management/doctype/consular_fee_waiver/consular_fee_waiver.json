@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "waiver_title",
     "application",
     "waiver_type",
     "amount",
@@ -17,29 +18,45 @@
   ],
   "fields": [
     {
+      "fieldname": "waiver_title",
+      "fieldtype": "Data",
+      "label": "Waiver Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "application",
       "fieldtype": "Link",
       "label": "Application",
       "options": "Consular Application",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "waiver_type",
       "fieldtype": "Select",
       "label": "Waiver Type",
-      "options": "Full\nPartial"
+      "options": "Full\nPartial",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "amount",
       "fieldtype": "Currency",
       "label": "Amount",
-      "options": "currency"
+      "options": "currency",
+      "in_list_view": 1
     },
     {
       "fieldname": "currency",
       "fieldtype": "Link",
       "label": "Currency",
-      "options": "Currency"
+      "options": "Currency",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "reason",
@@ -51,7 +68,9 @@
       "fieldname": "approved_by",
       "fieldtype": "Link",
       "label": "Approved By",
-      "options": "User"
+      "options": "User",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "approved_on",
@@ -62,7 +81,9 @@
       "fieldname": "active",
       "fieldtype": "Check",
       "label": "Active",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     }
   ],
   "index_web_pages_for_search": 1,
@@ -173,5 +194,8 @@
   ],
   "sort_field": "modified",
   "sort_order": "DESC",
-  "states": []
+  "states": [],
+  "title_field": "waiver_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "waiver_title,application,waiver_type,currency,approved_by"
 }

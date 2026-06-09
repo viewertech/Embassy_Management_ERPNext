@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "details_title",
     "consular_application",
     "passport_type",
     "passport_number",
@@ -18,22 +19,36 @@
   ],
   "fields": [
     {
+      "fieldname": "details_title",
+      "fieldtype": "Data",
+      "label": "Details Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "consular_application",
       "fieldtype": "Link",
       "label": "Consular Application",
       "options": "Consular Application",
       "reqd": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "passport_type",
       "fieldtype": "Data",
-      "label": "Passport Type"
+      "label": "Passport Type",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "passport_number",
       "fieldtype": "Data",
-      "label": "Passport Number"
+      "label": "Passport Number",
+      "in_list_view": 1
     },
     {
       "fieldname": "issue_date",
@@ -43,7 +58,8 @@
     {
       "fieldname": "expiry_date",
       "fieldtype": "Date",
-      "label": "Expiry Date"
+      "label": "Expiry Date",
+      "in_list_view": 1
     },
     {
       "fieldname": "place_of_issue",
@@ -54,7 +70,9 @@
       "fieldname": "service_request_type",
       "fieldtype": "Select",
       "label": "Service Request Type",
-      "options": "Renewal\nNew\nReplacement"
+      "options": "Renewal\nNew\nReplacement",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "lost_passport_report",
@@ -176,5 +194,8 @@
   ],
   "sort_field": "modified",
   "sort_order": "DESC",
-  "states": []
+  "states": [],
+  "title_field": "details_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "details_title,consular_application,service_request_type,passport_type,passport_number"
 }

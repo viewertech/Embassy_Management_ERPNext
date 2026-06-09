@@ -27,26 +27,35 @@
       "fieldtype": "Link",
       "label": "Section",
       "options": "Application Form Section",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "field_name",
       "fieldtype": "Data",
       "label": "Field Name",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "label",
       "fieldtype": "Data",
       "label": "Label",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "bold": 1
     },
     {
       "fieldname": "field_type",
       "fieldtype": "Select",
       "label": "Field Type",
       "options": "Text\nLong Text\nDate\nSelect\nLink\nCountry\nEmail\nPhone\nCurrency\nFile Upload\nCheckbox\nTable\nHidden\nRead Only",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "options",
@@ -56,12 +65,16 @@
     {
       "fieldname": "required",
       "fieldtype": "Check",
-      "label": "Required"
+      "label": "Required",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "hidden",
       "fieldtype": "Check",
-      "label": "Hidden"
+      "label": "Hidden",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "read_only",
@@ -87,7 +100,8 @@
       "fieldname": "sequence",
       "fieldtype": "Int",
       "label": "Sequence",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "maps_to_doctype",
@@ -152,5 +166,6 @@
   "sort_order": "DESC",
   "states": [],
   "title_field": "label",
-  "search_fields": "label,field_name,section"
+  "search_fields": "label,field_name,section,field_type",
+  "show_title_field_in_link": 1
 }

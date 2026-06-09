@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "review_title",
     "application",
     "sales_invoice",
     "payment_entry",
@@ -20,23 +21,38 @@
   ],
   "fields": [
     {
+      "fieldname": "review_title",
+      "fieldtype": "Data",
+      "label": "Review Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "application",
       "fieldtype": "Link",
       "label": "Application",
       "options": "Consular Application",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "sales_invoice",
       "fieldtype": "Link",
       "label": "Sales Invoice",
-      "options": "Sales Invoice"
+      "options": "Sales Invoice",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "payment_entry",
       "fieldtype": "Link",
       "label": "Payment Entry",
-      "options": "Payment Entry"
+      "options": "Payment Entry",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "payment_request",
@@ -54,26 +70,33 @@
       "fieldname": "amount",
       "fieldtype": "Currency",
       "label": "Amount",
-      "options": "currency"
+      "options": "currency",
+      "in_list_view": 1
     },
     {
       "fieldname": "currency",
       "fieldtype": "Link",
       "label": "Currency",
-      "options": "Currency"
+      "options": "Currency",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "review_status",
       "fieldtype": "Select",
       "label": "Review Status",
       "options": "Pending\nConfirmed\nRejected\nRefunded",
-      "default": "Pending"
+      "default": "Pending",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "reviewed_by",
       "fieldtype": "Link",
       "label": "Reviewed By",
-      "options": "User"
+      "options": "User",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "reviewed_on",
@@ -195,5 +218,7 @@
   "sort_field": "modified",
   "sort_order": "DESC",
   "states": [],
-  "search_fields": "application,sales_invoice,payment_entry,review_status"
+  "search_fields": "review_title,application,sales_invoice,payment_entry,review_status,currency",
+  "title_field": "review_title",
+  "show_title_field_in_link": 1
 }

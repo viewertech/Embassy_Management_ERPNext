@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "fee_rule_title",
     "service",
     "visa_type",
     "nationality",
@@ -21,42 +22,63 @@
   ],
   "fields": [
     {
+      "fieldname": "fee_rule_title",
+      "fieldtype": "Data",
+      "label": "Fee Rule Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "service",
       "fieldtype": "Link",
       "label": "Service",
       "options": "Consular Service",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "visa_type",
       "fieldtype": "Select",
       "label": "Visa Type",
-      "options": "\nTourist\nBusiness\nFamily Visit\nOfficial\nDiplomatic\nTransit\nStudent\nWork\nOther"
+      "options": "\nTourist\nBusiness\nFamily Visit\nOfficial\nDiplomatic\nTransit\nStudent\nWork\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "nationality",
       "fieldtype": "Link",
       "label": "Nationality",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "residence_country",
       "fieldtype": "Link",
       "label": "Residence Country",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "processing_type",
       "fieldtype": "Select",
       "label": "Processing Type",
       "options": "Normal\nFast Track\nEmergency",
-      "default": "Normal"
+      "default": "Normal",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "entry_type",
       "fieldtype": "Select",
       "label": "Entry Type",
-      "options": "\nSingle\nMultiple\nTransit"
+      "options": "\nSingle\nMultiple\nTransit",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "fee_item",
@@ -69,14 +91,17 @@
       "fieldtype": "Currency",
       "label": "Amount",
       "options": "currency",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1
     },
     {
       "fieldname": "currency",
       "fieldtype": "Link",
       "label": "Currency",
       "options": "Currency",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "effective_from",
@@ -92,7 +117,9 @@
       "fieldname": "active",
       "fieldtype": "Check",
       "label": "Active",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     }
   ],
   "index_web_pages_for_search": 1,
@@ -146,5 +173,7 @@
   "sort_field": "modified",
   "sort_order": "DESC",
   "states": [],
-  "search_fields": "service,visa_type,nationality,residence_country,processing_type"
+  "search_fields": "fee_rule_title,service,visa_type,nationality,residence_country,processing_type,entry_type,currency",
+  "title_field": "fee_rule_title",
+  "show_title_field_in_link": 1
 }

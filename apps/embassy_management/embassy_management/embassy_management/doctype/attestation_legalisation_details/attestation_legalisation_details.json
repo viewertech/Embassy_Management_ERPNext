@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "details_title",
     "consular_application",
     "document_type",
     "document_owner",
@@ -17,22 +18,36 @@
   ],
   "fields": [
     {
+      "fieldname": "details_title",
+      "fieldtype": "Data",
+      "label": "Details Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "consular_application",
       "fieldtype": "Link",
       "label": "Consular Application",
       "options": "Consular Application",
       "reqd": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "document_type",
       "fieldtype": "Data",
-      "label": "Document Type"
+      "label": "Document Type",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "document_owner",
       "fieldtype": "Data",
-      "label": "Document Owner"
+      "label": "Document Owner",
+      "in_list_view": 1
     },
     {
       "fieldname": "issuing_authority",
@@ -43,13 +58,17 @@
       "fieldname": "country_of_issue",
       "fieldtype": "Link",
       "label": "Country of Issue",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "legalisation_type",
       "fieldtype": "Select",
       "label": "Legalisation Type",
-      "options": "Attestation\nLegalisation\nCertified Copy\nSignature Verification\nOther"
+      "options": "Attestation\nLegalisation\nCertified Copy\nSignature Verification\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "number_of_copies",
@@ -171,5 +190,8 @@
   ],
   "sort_field": "modified",
   "sort_order": "DESC",
-  "states": []
+  "states": [],
+  "title_field": "details_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "details_title,consular_application,document_type,document_owner,country_of_issue,legalisation_type"
 }

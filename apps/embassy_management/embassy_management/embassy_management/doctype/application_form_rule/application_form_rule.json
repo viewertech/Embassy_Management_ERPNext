@@ -27,31 +27,41 @@
       "fieldname": "rule_name",
       "fieldtype": "Data",
       "label": "Rule Name",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "bold": 1
     },
     {
       "fieldname": "template",
       "fieldtype": "Link",
       "label": "Template",
-      "options": "Application Form Template"
+      "options": "Application Form Template",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "service",
       "fieldtype": "Link",
       "label": "Service",
-      "options": "Consular Service"
+      "options": "Consular Service",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "enabled",
       "fieldtype": "Check",
       "label": "Enabled",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "priority",
       "fieldtype": "Int",
       "label": "Priority",
-      "default": 100
+      "default": 100,
+      "in_list_view": 1
     },
     {
       "fieldname": "condition",
@@ -62,7 +72,9 @@
       "fieldname": "trigger_field",
       "fieldtype": "Data",
       "label": "Trigger Field",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "operator",
@@ -86,7 +98,9 @@
       "fieldtype": "Select",
       "label": "Rule Type",
       "options": "Show/Hide Field\nMake Required\nCalculate Fee\nTrigger Notice\nRequire Document\nRequire Appointment\nRestrict Eligibility",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "action_target",
@@ -162,5 +176,6 @@
   "sort_order": "DESC",
   "states": [],
   "title_field": "rule_name",
-  "search_fields": "rule_name,service,trigger_field,rule_type"
+  "search_fields": "rule_name,service,template,trigger_field,rule_type",
+  "show_title_field_in_link": 1
 }

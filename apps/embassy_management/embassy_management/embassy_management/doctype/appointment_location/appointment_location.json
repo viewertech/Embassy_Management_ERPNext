@@ -17,7 +17,10 @@
       "fieldname": "location_name",
       "fieldtype": "Data",
       "label": "Location Name",
-      "reqd": 1
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "bold": 1
     },
     {
       "fieldname": "address",
@@ -28,18 +31,23 @@
     {
       "fieldname": "time_zone",
       "fieldtype": "Data",
-      "label": "Time Zone"
+      "label": "Time Zone",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "room_counter",
       "fieldtype": "Data",
-      "label": "Room / Counter"
+      "label": "Room / Counter",
+      "in_list_view": 1
     },
     {
       "fieldname": "active",
       "fieldtype": "Check",
       "label": "Active",
-      "default": 1
+      "default": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     }
   ],
   "index_web_pages_for_search": 1,
@@ -95,5 +103,6 @@
   "states": [],
   "autoname": "field:location_name",
   "title_field": "location_name",
-  "show_title_field_in_link": 1
+  "show_title_field_in_link": 1,
+  "search_fields": "location_name,address,time_zone"
 }

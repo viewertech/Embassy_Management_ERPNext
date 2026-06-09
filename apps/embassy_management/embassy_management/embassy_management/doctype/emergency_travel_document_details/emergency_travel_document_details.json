@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "details_title",
     "consular_application",
     "reason",
     "destination_country",
@@ -15,29 +16,45 @@
   ],
   "fields": [
     {
+      "fieldname": "details_title",
+      "fieldtype": "Data",
+      "label": "Details Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "consular_application",
       "fieldtype": "Link",
       "label": "Consular Application",
       "options": "Consular Application",
       "reqd": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "reason",
       "fieldtype": "Select",
       "label": "Reason",
-      "options": "Lost Passport\nExpired Passport\nEmergency Repatriation\nOther"
+      "options": "Lost Passport\nExpired Passport\nEmergency Repatriation\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "destination_country",
       "fieldtype": "Link",
       "label": "Destination Country",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "travel_date",
       "fieldtype": "Date",
-      "label": "Travel Date"
+      "label": "Travel Date",
+      "in_list_view": 1
     },
     {
       "fieldname": "police_report",
@@ -48,7 +65,8 @@
     {
       "fieldname": "valid_until",
       "fieldtype": "Date",
-      "label": "Valid Until"
+      "label": "Valid Until",
+      "in_list_view": 1
     }
   ],
   "index_web_pages_for_search": 1,
@@ -159,5 +177,8 @@
   ],
   "sort_field": "modified",
   "sort_order": "DESC",
-  "states": []
+  "states": [],
+  "title_field": "details_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "details_title,consular_application,reason,destination_country"
 }

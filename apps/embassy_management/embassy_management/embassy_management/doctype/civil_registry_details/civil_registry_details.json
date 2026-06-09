@@ -6,6 +6,7 @@
   "editable_grid": 1,
   "engine": "InnoDB",
   "field_order": [
+    "details_title",
     "consular_application",
     "registry_service_type",
     "event_date",
@@ -16,34 +17,51 @@
   ],
   "fields": [
     {
+      "fieldname": "details_title",
+      "fieldtype": "Data",
+      "label": "Details Title",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "consular_application",
       "fieldtype": "Link",
       "label": "Consular Application",
       "options": "Consular Application",
       "reqd": 1,
-      "unique": 1
+      "unique": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "registry_service_type",
       "fieldtype": "Select",
       "label": "Registry Service Type",
-      "options": "Birth Registration\nMarriage Registration\nDeath Registration\nName Change\nOther"
+      "options": "Birth Registration\nMarriage Registration\nDeath Registration\nName Change\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "event_date",
       "fieldtype": "Date",
-      "label": "Event Date"
+      "label": "Event Date",
+      "in_list_view": 1
     },
     {
       "fieldname": "event_country",
       "fieldtype": "Link",
       "label": "Event Country",
-      "options": "Country"
+      "options": "Country",
+      "in_list_view": 1,
+      "in_standard_filter": 1
     },
     {
       "fieldname": "related_person",
       "fieldtype": "Data",
-      "label": "Related Person"
+      "label": "Related Person",
+      "in_list_view": 1
     },
     {
       "fieldname": "certificate_required",
@@ -165,5 +183,8 @@
   ],
   "sort_field": "modified",
   "sort_order": "DESC",
-  "states": []
+  "states": [],
+  "title_field": "details_title",
+  "show_title_field_in_link": 1,
+  "search_fields": "details_title,consular_application,registry_service_type,event_country,related_person"
 }
