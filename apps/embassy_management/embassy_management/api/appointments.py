@@ -3,6 +3,7 @@ from __future__ import annotations
 import frappe
 from frappe import _
 
+from embassy_management.embassy_management.display_titles import link_title
 from embassy_management.utils import get_or_create_applicant_profile
 
 
@@ -17,12 +18,28 @@ def available_slots(service=None, location=None, from_date=None, to_date=None):
         filters["slot_date"] = ["between", [from_date, to_date]]
     elif from_date:
         filters["slot_date"] = [">=", from_date]
-    return frappe.get_all(
+    rows = frappe.get_all(
         "Appointment Slot",
         filters=filters,
-        fields=["name", "service", "location", "officer", "slot_date", "from_time", "to_time", "capacity", "booked_count"],
+        fields=[
+            "name",
+            "slot_label",
+            "service",
+            "location",
+            "officer",
+            "slot_date",
+            "from_time",
+            "to_time",
+            "capacity",
+            "booked_count",
+        ],
         order_by="slot_date asc, from_time asc",
     )
+    for row in rows:
+        row.service_label = link_title("Consular Service", row.service, "service_name")
+        row.location_label = link_title("Appointment Location", row.location, "location_name")
+        row.officer_label = link_title("User", row.officer)
+    return rows
 
 
 @frappe.whitelist()

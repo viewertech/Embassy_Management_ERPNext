@@ -3,6 +3,7 @@ from __future__ import annotations
 import frappe
 from frappe import _
 
+from embassy_management.embassy_management.display_titles import link_title
 from embassy_management.api.requirements import evaluate_requirements
 from embassy_management.utils import get_or_create_applicant_profile
 
@@ -95,6 +96,10 @@ def applicant_dashboard():
         fields=["name", "booking_code", "service", "appointment_date", "start_time", "status"],
         order_by="appointment_date desc",
     )
+    for application in applications:
+        application.service_label = link_title("Consular Service", application.service, "service_name")
+    for appointment in appointments:
+        appointment.service_label = link_title("Consular Service", appointment.service, "service_name")
     return {"profile": profile.as_dict(), "applications": applications, "appointments": appointments}
 
 

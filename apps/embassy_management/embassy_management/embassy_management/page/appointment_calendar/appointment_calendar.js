@@ -71,8 +71,8 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
                 <td>${ui.escape(row.appointment_date || '')}</td>
                 <td>${ui.escape(row.start_time || '')}</td>
                 <td><a href="/app/embassy-appointment/${encodeURIComponent(row.name)}">${ui.escape(row.booking_code || row.name)}</a></td>
-                <td>${ui.escape(row.service || '')}</td>
-                <td>${ui.escape(row.location || '')}</td>
+                <td>${ui.escape(row.service_label || row.service || '')}</td>
+                <td>${ui.escape(row.location_label || row.location || '')}</td>
                 <td><span class="ems-badge ems-badge--${ui.statusClass(row.status)}">${ui.escape(row.status || '')}</span></td>
               </tr>
             `).join('')}

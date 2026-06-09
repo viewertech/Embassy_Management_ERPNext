@@ -49,7 +49,7 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
         ${rows.map(row => `
           <a class="ems-list-row" href="/app/consular-payment-review/${encodeURIComponent(row.name)}">
             <span>
-              <span class="ems-list-title">${ui.escape(row.application || row.name)}</span>
+              <span class="ems-list-title">${ui.escape(row.review_title || row.application_label || row.name)}</span>
               <span class="ems-list-subtitle">${ui.escape(row.currency || '')} ${ui.escape(row.amount || 0)}</span>
             </span>
             <span class="ems-badge ems-badge--${ui.statusClass(row.review_status)}">${ui.escape(row.review_status || __('Pending'))}</span>

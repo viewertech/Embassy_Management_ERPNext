@@ -70,7 +70,7 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
             <a class="ems-list-row" href="/app/consular-application/${encodeURIComponent(row.name)}">
               <span>
                 <span class="ems-list-title">${ui.escape(row.application_number || row.name)}</span>
-                <span class="ems-list-subtitle">${ui.escape(row.service || __('Service not set'))} &middot; ${ui.escape(row.assigned_officer || __('Unassigned'))}</span>
+                <span class="ems-list-subtitle">${ui.escape(row.service_label || row.service || __('Service not set'))} &middot; ${ui.escape(row.assigned_officer_label || row.assigned_officer || __('Unassigned'))}</span>
               </span>
               <span class="ems-pill-row">
                 <span class="ems-badge ems-badge--${ui.statusClass(priority)}">${ui.escape(priority)}</span>
@@ -94,13 +94,10 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
 
     body.find('.ems-results').html(`<div class="ems-empty-state">${__('Loading cases...')}</div>`);
     frappe.call({
-      method: 'frappe.client.get_list',
+      method: 'embassy_management.embassy_management.page.officer_workbench.officer_workbench.case_queue',
       args: {
-        doctype: 'Consular Application',
-        fields: ['name', 'application_number', 'service', 'application_status', 'priority', 'assigned_officer', 'modified'],
         filters,
-        limit_page_length: 50,
-        order_by: 'modified asc'
+        limit: 50
       },
       callback: (response) => {
         body.find('.ems-results').html(renderRows(response.message || []));

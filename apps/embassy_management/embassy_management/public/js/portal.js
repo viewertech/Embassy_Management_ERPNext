@@ -166,7 +166,7 @@ function renderDashboard(appRoot) {
           ${applications.length ? applications.map(app => `
             <div class="ems-result-row">
               <strong>${emsEscape(app.application_number || app.name)}</strong>
-              <p>${emsEscape(app.service || '')} - ${emsEscape(app.application_status || '')}</p>
+              <p>${emsEscape(app.service_label || app.service || '')} - ${emsEscape(app.application_status || '')}</p>
               <span class="ems-chip">${emsEscape(app.payment_status || __('Payment status not set'))}</span>
             </div>
           `).join('') : `<div class="ems-empty">${__('No applications found for this account.')}</div>`}
