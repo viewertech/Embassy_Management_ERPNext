@@ -144,6 +144,11 @@
         gap: 10px;
       }
 
+      .ems-filter-bar .form-control {
+        min-width: 180px;
+        width: auto;
+      }
+
       .ems-toolbar .btn, .ems-filter-bar .btn {
         align-items: center;
         display: inline-flex;
@@ -170,10 +175,14 @@
         padding: 8px 10px;
       }
 
-      .ems-action-grid, .ems-metric-grid {
+      .ems-action-grid, .ems-metric-grid, .ems-task-strip {
         display: grid;
         gap: 12px;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .ems-task-strip {
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       }
 
       .ems-action-card, .ems-metric-card, .ems-panel {
@@ -193,6 +202,50 @@
         text-align: left;
         transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
         width: 100%;
+      }
+
+      .ems-task-button {
+        align-items: center;
+        background: #fbfcfe;
+        border: 1px solid #e5ebf2;
+        border-radius: 8px;
+        color: inherit;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: auto auto minmax(0, 1fr);
+        min-height: 76px;
+        padding: 12px;
+        text-align: left;
+      }
+
+      .ems-task-button:hover, .ems-task-button:focus {
+        background: #f6faf9;
+        border-color: #cde3df;
+        outline: none;
+      }
+
+      .ems-task-number {
+        align-items: center;
+        background: #123c5f;
+        border-radius: 999px;
+        color: #ffffff;
+        display: inline-flex;
+        font-size: 12px;
+        font-weight: 800;
+        height: 28px;
+        justify-content: center;
+        width: 28px;
+      }
+
+      .ems-task-button strong, .ems-task-button small {
+        display: block;
+      }
+
+      .ems-task-button small {
+        color: #5a687a;
+        font-size: 12px;
+        line-height: 1.35;
+        margin-top: 2px;
       }
 
       .ems-action-card:hover, .ems-action-card:focus {
@@ -360,6 +413,25 @@
         text-align: center;
       }
 
+      .ems-empty-state strong {
+        color: #152238;
+        display: block;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+
+      .ems-empty-state p {
+        margin: 0 0 12px;
+      }
+
+      .ems-empty-actions {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+      }
+
       .ems-table-wrap {
         border: 1px solid #d8e0ea;
         border-radius: 8px;
@@ -400,6 +472,18 @@
 
         .ems-list-row {
           grid-template-columns: 1fr;
+        }
+
+        .ems-filter-bar .form-control {
+          width: 100%;
+        }
+
+        .ems-task-button {
+          grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .ems-task-button .ems-card-icon {
+          display: none;
         }
       }
     `;

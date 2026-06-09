@@ -14,6 +14,11 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
     single_column: true
   });
 
+  const quickFilters = {
+    mine: false,
+    urgent: false
+  };
+
   const body = $(`
     <div class="ems-desk ems-command-shell">
       <section class="ems-command-header">
@@ -48,8 +53,17 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
             <option>Awaiting Interview</option>
             <option>Under Officer Review</option>
           </select>
-          <input class="form-control ems-service" placeholder="${__('Service')}">
-          <input class="form-control ems-officer" placeholder="${__('Assigned Officer')}">
+          <select class="form-control ems-priority" aria-label="${__('Priority')}">
+            <option value="">${__('Any priority')}</option>
+            <option>Normal</option>
+            <option>Urgent</option>
+            <option>Emergency</option>
+          </select>
+          <input class="form-control ems-service" placeholder="${__('Type service name')}">
+          <input class="form-control ems-officer" placeholder="${__('Type officer name or email')}">
+          <button class="btn btn-default ems-mine" type="button">${ui.icon('user-check', 'sm')} ${__('Mine')}</button>
+          <button class="btn btn-default ems-urgent" type="button">${ui.icon('alert-triangle', 'sm')} ${__('Urgent')}</button>
+          <button class="btn btn-default ems-clear" type="button">${ui.icon('x', 'sm')} ${__('Clear')}</button>
         </div>
         <div class="ems-results"></div>
       </section>
@@ -58,7 +72,18 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
 
   const renderRows = (rows) => {
     if (!rows.length) {
-      return `<div class="ems-empty-state">${__('No cases match the current filters.')}</div>`;
+      return `
+        <div class="ems-empty-state">
+          <div>
+            <strong>${__('No matching cases')}</strong>
+            <p>${__('Try a broader status, clear the filters, or create a new case.')}</p>
+            <div class="ems-empty-actions">
+              <button class="btn btn-primary" type="button" data-empty-action="new-case">${ui.icon('plus', 'sm')} ${__('New Case')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="clear">${ui.icon('x', 'sm')} ${__('Clear Filters')}</button>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     return `
@@ -86,17 +111,21 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
   const render = () => {
     const filters = {};
     const status = body.find('.ems-status').val();
+    const priority = body.find('.ems-priority').val();
     const service = body.find('.ems-service').val();
     const officer = body.find('.ems-officer').val();
     if (status) filters.application_status = status;
-    if (service) filters.service = service;
-    if (officer) filters.assigned_officer = officer;
+    if (priority) filters.priority = priority;
+    if (quickFilters.urgent) filters.priority = ['in', ['Urgent', 'Emergency']];
+    if (quickFilters.mine) filters.assigned_officer = frappe.session.user;
 
     body.find('.ems-results').html(`<div class="ems-empty-state">${__('Loading cases...')}</div>`);
     frappe.call({
       method: 'embassy_management.embassy_management.page.officer_workbench.officer_workbench.case_queue',
       args: {
         filters,
+        service_query: service,
+        officer_query: officer,
         limit: 50
       },
       callback: (response) => {
@@ -110,7 +139,29 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
 
   body.find('.ems-refresh').on('click', render);
   body.find('[data-route="Consular Application"]').on('click', () => frappe.new_doc('Consular Application'));
+  body.on('click', '[data-empty-action="new-case"]', () => frappe.new_doc('Consular Application'));
+  body.on('click', '[data-empty-action="clear"]', () => clearFilters());
+  body.find('.ems-mine').on('click', function () {
+    quickFilters.mine = !quickFilters.mine;
+    $(this).toggleClass('btn-primary', quickFilters.mine).toggleClass('btn-default', !quickFilters.mine);
+    render();
+  });
+  body.find('.ems-urgent').on('click', function () {
+    quickFilters.urgent = !quickFilters.urgent;
+    $(this).toggleClass('btn-primary', quickFilters.urgent).toggleClass('btn-default', !quickFilters.urgent);
+    render();
+  });
+  body.find('.ems-clear').on('click', () => clearFilters());
   const debouncedRender = frappe.utils.debounce ? frappe.utils.debounce(render, 350) : render;
-  body.find('.ems-status, .ems-service, .ems-officer').on('change keyup', debouncedRender);
+  body.find('.ems-status, .ems-priority, .ems-service, .ems-officer').on('change keyup', debouncedRender);
+
+  function clearFilters() {
+    quickFilters.mine = false;
+    quickFilters.urgent = false;
+    body.find('.ems-status, .ems-priority, .ems-service, .ems-officer').val('');
+    body.find('.ems-mine, .ems-urgent').removeClass('btn-primary').addClass('btn-default');
+    render();
+  }
+
   render();
 };

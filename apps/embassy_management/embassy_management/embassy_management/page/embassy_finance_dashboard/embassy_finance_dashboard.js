@@ -31,6 +31,7 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
           <div class="ems-toolbar">
             <button class="btn btn-primary ems-refresh" type="button">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
             <button class="btn btn-default" type="button" data-route="Consular Payment Review">${ui.icon('list', 'sm')} ${__('Payment Reviews')}</button>
+            <button class="btn btn-default" type="button" data-route="Consular Fee Rule">${ui.icon('credit-card', 'sm')} ${__('Fee Rules')}</button>
           </div>
           <a href="https://viewertech.net" target="_blank" rel="noopener">Powered by Viewertech</a>
         </div>
@@ -41,7 +42,18 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
 
   const renderReviews = (rows) => {
     if (!rows.length) {
-      return `<div class="ems-empty-state">${__('No payment reviews found.')}</div>`;
+      return `
+        <div class="ems-empty-state">
+          <div>
+            <strong>${__('No payment reviews found')}</strong>
+            <p>${__('Clear the status filter or create a manual payment review.')}</p>
+            <div class="ems-empty-actions">
+              <button class="btn btn-primary" type="button" data-empty-action="new-review">${ui.icon('plus', 'sm')} ${__('New Review')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="clear">${ui.icon('x', 'sm')} ${__('Clear Filter')}</button>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     return `
@@ -60,9 +72,13 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
   };
 
   const render = () => {
+    const selectedStatus = body.find('.ems-review-status').val() || '';
     body.find('.ems-results').html(`<div class="ems-empty-state">${__('Loading finance dashboard...')}</div>`);
     frappe.call({
       method: 'embassy_management.embassy_management.page.embassy_finance_dashboard.embassy_finance_dashboard.summary',
+      args: {
+        review_status: selectedStatus
+      },
       callback: (response) => {
         const data = response.message || {};
         const rows = data.reviews || [];
@@ -83,10 +99,22 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
                 <h3>${__('Recent Reviews')}</h3>
                 <p class="ems-panel-copy">${__('Latest consular payment review records.')}</p>
               </div>
+              <div class="ems-toolbar">
+                <select class="form-control ems-review-status" aria-label="${__('Review status')}">
+                  <option value="">${__('Any status')}</option>
+                  <option>Pending</option>
+                  <option>Confirmed</option>
+                  <option>Rejected</option>
+                  <option>Refunded</option>
+                </select>
+                <button class="btn btn-default" type="button" data-route="Sales Invoice">${ui.icon('file-text', 'sm')} ${__('Invoices')}</button>
+                <button class="btn btn-default" type="button" data-route="Payment Entry">${ui.icon('banknote', 'sm')} ${__('Payments')}</button>
+              </div>
             </div>
             ${renderReviews(rows)}
           </section>
         `);
+        body.find('.ems-review-status').val(selectedStatus);
       },
       error: () => {
         body.find('.ems-results').html(`<div class="ems-empty-state">${__('Unable to load finance summary.')}</div>`);
@@ -95,6 +123,14 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
   };
 
   body.find('.ems-refresh').on('click', render);
-  body.find('[data-route="Consular Payment Review"]').on('click', () => frappe.set_route('List', 'Consular Payment Review'));
+  body.on('change', '.ems-review-status', render);
+  body.on('click', '[data-route]', function () {
+    frappe.set_route('List', $(this).data('route'));
+  });
+  body.on('click', '[data-empty-action="new-review"]', () => frappe.new_doc('Consular Payment Review'));
+  body.on('click', '[data-empty-action="clear"]', () => {
+    body.find('.ems-review-status').val('');
+    render();
+  });
   render();
 };

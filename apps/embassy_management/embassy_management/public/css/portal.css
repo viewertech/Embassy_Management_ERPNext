@@ -127,6 +127,14 @@
   margin-top: 24px;
 }
 
+.ems-portal-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
 .ems-public .btn {
   border-radius: 8px;
   font-weight: 800;
@@ -352,6 +360,11 @@
   padding: 13px;
 }
 
+.ems-result-row strong,
+.ems-empty strong {
+  color: var(--ems-ink);
+}
+
 .ems-empty {
   align-items: center;
   background: #fbfcfe;
@@ -362,6 +375,11 @@
   min-height: 120px;
   padding: 20px;
   text-align: center;
+}
+
+.ems-empty .ems-actions {
+  justify-content: center;
+  margin-top: 12px;
 }
 
 .ems-footer {

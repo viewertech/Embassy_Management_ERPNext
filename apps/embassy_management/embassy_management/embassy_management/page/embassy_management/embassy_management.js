@@ -71,6 +71,39 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
     { label: __('Payment Reviews'), selector: 'payments', doctype: 'Consular Payment Review' }
   ];
 
+  const taskFlow = [
+    {
+      icon: 'settings',
+      label: __('Configure Mission'),
+      meta: __('Branding, contacts, currency'),
+      action: () => frappe.set_route('Form', 'Embassy Settings', 'Embassy Settings')
+    },
+    {
+      icon: 'briefcase',
+      label: __('Publish Services'),
+      meta: __('Visas, passports, cards, attestations'),
+      action: () => frappe.set_route('List', 'Consular Service')
+    },
+    {
+      icon: 'file-plus',
+      label: __('Build Application Forms'),
+      meta: __('Sections, fields, rules'),
+      action: () => frappe.set_route('List', 'Application Form Template')
+    },
+    {
+      icon: 'calendar-plus',
+      label: __('Open Appointment Slots'),
+      meta: __('Locations, capacity, officers'),
+      action: () => frappe.set_route('List', 'Appointment Slot')
+    },
+    {
+      icon: 'clipboard-check',
+      label: __('Review Cases'),
+      meta: __('Queue, documents, decisions'),
+      action: () => frappe.set_route('officer-workbench')
+    }
+  ];
+
   const body = $(`
     <div class="ems-desk ems-command-shell">
       <section class="ems-command-header">
@@ -105,6 +138,27 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
             <div class="ems-metric-label">${ui.escape(metric.label)}</div>
           </article>
         `).join('')}
+      </section>
+
+      <section class="ems-panel">
+        <div class="ems-panel-title">
+          <div>
+            <h3>${__('Daily Work')}</h3>
+            <p class="ems-panel-copy">${__('The main EMS tasks in the order staff usually need them.')}</p>
+          </div>
+        </div>
+        <div class="ems-task-strip">
+          ${taskFlow.map((task, index) => `
+            <button class="ems-task-button" type="button" data-task-index="${index}">
+              <span class="ems-task-number">${index + 1}</span>
+              <span class="ems-card-icon">${ui.icon(task.icon, 'sm')}</span>
+              <span>
+                <strong>${ui.escape(task.label)}</strong>
+                <small>${ui.escape(task.meta)}</small>
+              </span>
+            </button>
+          `).join('')}
+        </div>
       </section>
 
       <section class="ems-action-grid">
@@ -150,6 +204,10 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
 
   body.find('.ems-action-card[data-index]').on('click', function () {
     cards[Number($(this).data('index'))].action();
+  });
+
+  body.find('.ems-task-button').on('click', function () {
+    taskFlow[Number($(this).data('task-index'))].action();
   });
 
   body.find('.ems-action-card[data-doctype]').on('click', function () {

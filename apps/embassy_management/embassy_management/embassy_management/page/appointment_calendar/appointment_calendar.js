@@ -42,6 +42,24 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
             <p class="ems-panel-copy">${__('Sorted by appointment date and start time.')}</p>
           </div>
         </div>
+        <div class="ems-filter-bar">
+          <input class="form-control ems-from-date" type="date" aria-label="${__('From date')}">
+          <input class="form-control ems-to-date" type="date" aria-label="${__('To date')}">
+          <select class="form-control ems-status" aria-label="${__('Status')}">
+            <option value="">${__('Any status')}</option>
+            <option>Booked</option>
+            <option>Confirmed</option>
+            <option>Rescheduled</option>
+            <option>Completed</option>
+            <option>No-show</option>
+            <option>Cancelled</option>
+            <option>Walk-in</option>
+          </select>
+          <input class="form-control ems-service" placeholder="${__('Type service name')}">
+          <input class="form-control ems-location" placeholder="${__('Type location name')}">
+          <button class="btn btn-default ems-today" type="button">${ui.icon('calendar', 'sm')} ${__('Today')}</button>
+          <button class="btn btn-default ems-clear" type="button">${ui.icon('x', 'sm')} ${__('Clear')}</button>
+        </div>
         <div class="ems-results"></div>
       </section>
     </div>
@@ -49,7 +67,19 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
 
   const renderTable = (rows) => {
     if (!rows.length) {
-      return `<div class="ems-empty-state">${__('No upcoming appointments found.')}</div>`;
+      return `
+        <div class="ems-empty-state">
+          <div>
+            <strong>${__('No appointments found')}</strong>
+            <p>${__('Clear the filters, create appointment slots, or add a walk-in appointment.')}</p>
+            <div class="ems-empty-actions">
+              <button class="btn btn-primary" type="button" data-empty-action="new-appointment">${ui.icon('plus', 'sm')} ${__('New Appointment')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="slots">${ui.icon('calendar-plus', 'sm')} ${__('Appointment Slots')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="clear">${ui.icon('x', 'sm')} ${__('Clear Filters')}</button>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     return `
@@ -86,6 +116,13 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
     body.find('.ems-results').html(`<div class="ems-empty-state">${__('Loading appointments...')}</div>`);
     frappe.call({
       method: 'embassy_management.embassy_management.page.appointment_calendar.appointment_calendar.upcoming',
+      args: {
+        from_date: body.find('.ems-from-date').val(),
+        to_date: body.find('.ems-to-date').val(),
+        status: body.find('.ems-status').val(),
+        service_query: body.find('.ems-service').val(),
+        location_query: body.find('.ems-location').val()
+      },
       callback: (response) => {
         body.find('.ems-results').html(renderTable(response.message || []));
       },
@@ -97,5 +134,22 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
 
   body.find('.ems-refresh').on('click', render);
   body.find('[data-route="Embassy Appointment"]').on('click', () => frappe.new_doc('Embassy Appointment'));
+  body.find('.ems-today').on('click', () => {
+    const today = frappe.datetime && frappe.datetime.get_today ? frappe.datetime.get_today() : new Date().toISOString().slice(0, 10);
+    body.find('.ems-from-date, .ems-to-date').val(today);
+    render();
+  });
+  body.find('.ems-clear').on('click', () => clearFilters());
+  body.on('click', '[data-empty-action="new-appointment"]', () => frappe.new_doc('Embassy Appointment'));
+  body.on('click', '[data-empty-action="slots"]', () => frappe.set_route('List', 'Appointment Slot'));
+  body.on('click', '[data-empty-action="clear"]', () => clearFilters());
+  const debouncedRender = frappe.utils.debounce ? frappe.utils.debounce(render, 350) : render;
+  body.find('.ems-from-date, .ems-to-date, .ems-status, .ems-service, .ems-location').on('change keyup', debouncedRender);
+
+  function clearFilters() {
+    body.find('.ems-from-date, .ems-to-date, .ems-status, .ems-service, .ems-location').val('');
+    render();
+  }
+
   render();
 };

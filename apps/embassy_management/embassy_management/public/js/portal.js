@@ -150,6 +150,10 @@ function renderDashboard(appRoot) {
       const applications = data.applications || [];
       const appointments = data.appointments || [];
       appRoot.innerHTML = `
+        <div class="ems-portal-actions">
+          <a class="btn btn-primary" href="/embassy/apply">${__('Start Application')}</a>
+          <a class="btn btn-outline-primary" href="/embassy/requirements">${__('Check Requirements')}</a>
+        </div>
         <div class="ems-panel-grid">
           <article class="ems-card">
             <span class="ems-chip">${__('Applications')}</span>
@@ -162,14 +166,40 @@ function renderDashboard(appRoot) {
             <p>${__('Booked consular appointments.')}</p>
           </article>
         </div>
-        <div class="ems-results ems-result-list">
-          ${applications.length ? applications.map(app => `
-            <div class="ems-result-row">
-              <strong>${emsEscape(app.application_number || app.name)}</strong>
-              <p>${emsEscape(app.service_label || app.service || '')} - ${emsEscape(app.application_status || '')}</p>
-              <span class="ems-chip">${emsEscape(app.payment_status || __('Payment status not set'))}</span>
+        <div class="ems-results ems-panel-grid">
+          <article class="ems-card">
+            <h3>${__('My Applications')}</h3>
+            <div class="ems-result-list">
+              ${applications.length ? applications.map(app => `
+                <div class="ems-result-row">
+                  <strong>${emsEscape(app.application_number || app.name)}</strong>
+                  <p>${emsEscape(app.service_label || app.service || '')} - ${emsEscape(app.application_status || '')}</p>
+                  <span class="ems-chip">${emsEscape(app.payment_status || __('Payment status not set'))}</span>
+                </div>
+              `).join('') : `
+                <div class="ems-empty">
+                  <div>
+                    <strong>${__('No applications yet')}</strong>
+                    <div class="ems-actions">
+                      <a class="btn btn-primary btn-sm" href="/embassy/apply">${__('Start Application')}</a>
+                    </div>
+                  </div>
+                </div>
+              `}
             </div>
-          `).join('') : `<div class="ems-empty">${__('No applications found for this account.')}</div>`}
+          </article>
+          <article class="ems-card">
+            <h3>${__('Appointments')}</h3>
+            <div class="ems-result-list">
+              ${appointments.length ? appointments.map(item => `
+                <div class="ems-result-row">
+                  <strong>${emsEscape(item.booking_code || __('Appointment'))}</strong>
+                  <p>${emsEscape(item.service_label || item.service || '')} - ${emsEscape(item.appointment_date || '')} ${emsEscape(item.start_time || '')}</p>
+                  <span class="ems-chip">${emsEscape(item.status || '')}</span>
+                </div>
+              `).join('') : `<div class="ems-empty">${__('No appointments booked.')}</div>`}
+            </div>
+          </article>
         </div>
       `;
     },
@@ -227,7 +257,7 @@ function loadServicesForSelect(select, selected) {
     method: 'embassy_management.api.portal.get_public_services',
     callback: function (response) {
       const services = response.message || [];
-      select.innerHTML = services.map(service => `<option value="${emsEscape(service.name)}">${emsEscape(service.service_name || service.name)}</option>`).join('');
+      select.innerHTML = `<option value="">${__('Select a service')}</option>` + services.map(service => `<option value="${emsEscape(service.name)}">${emsEscape(service.service_name || service.name)}</option>`).join('');
       if (selected) {
         select.value = selected;
       }
