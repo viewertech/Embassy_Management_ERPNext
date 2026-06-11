@@ -17,7 +17,14 @@
     "review_status",
     "reviewed_by",
     "reviewed_on",
-    "review_notes"
+    "review_notes",
+    "stripe_details",
+    "stripe_checkout_session_id",
+    "stripe_payment_intent",
+    "stripe_checkout_url",
+    "stripe_event_id",
+    "stripe_event_type",
+    "stripe_webhook_received_on"
   ],
   "fields": [
     {
@@ -107,6 +114,49 @@
       "fieldname": "review_notes",
       "fieldtype": "Small Text",
       "label": "Review Notes"
+    },
+    {
+      "fieldname": "stripe_details",
+      "fieldtype": "Section Break",
+      "label": "Stripe Details"
+    },
+    {
+      "fieldname": "stripe_checkout_session_id",
+      "fieldtype": "Data",
+      "label": "Stripe Checkout Session ID",
+      "read_only": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "stripe_payment_intent",
+      "fieldtype": "Data",
+      "label": "Stripe Payment Intent",
+      "read_only": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "stripe_checkout_url",
+      "fieldtype": "Small Text",
+      "label": "Stripe Checkout URL",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_event_id",
+      "fieldtype": "Data",
+      "label": "Stripe Event ID",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_event_type",
+      "fieldtype": "Data",
+      "label": "Stripe Event Type",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_webhook_received_on",
+      "fieldtype": "Datetime",
+      "label": "Stripe Webhook Received On",
+      "read_only": 1
     }
   ],
   "index_web_pages_for_search": 1,
@@ -218,7 +268,7 @@
   "sort_field": "modified",
   "sort_order": "DESC",
   "states": [],
-  "search_fields": "review_title,application,sales_invoice,payment_entry,review_status,currency",
+  "search_fields": "review_title,application,sales_invoice,payment_entry,review_status,currency,stripe_checkout_session_id,stripe_payment_intent",
   "title_field": "review_title",
   "show_title_field_in_link": 1
 }

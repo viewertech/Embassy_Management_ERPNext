@@ -7,7 +7,9 @@ description = "Reusable ERPNext/Frappe Embassy Management System"
 readme = "README.md"
 requires-python = ">=3.10"
 dynamic = ["version"]
-dependencies = []
+dependencies = [
+    "requests>=2.31.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/viewertech/Embassy_Management_ERPNext"

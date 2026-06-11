@@ -34,8 +34,8 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
         </div>
         <div class="ems-command-actions">
           <div class="ems-toolbar">
-            <button class="btn btn-primary ems-refresh" type="button">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
-            <button class="btn btn-default" type="button" data-route="Consular Application">${ui.icon('plus', 'sm')} ${__('New Case')}</button>
+            <button class="btn btn-primary ems-refresh" type="button" title="${__('Reload the case queue')}">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
+            <button class="btn btn-default" type="button" data-route="Consular Application" title="${__('Create a new consular application case')}">${ui.icon('plus', 'sm')} ${__('New Case')}</button>
           </div>
           <a href="https://viewertech.net" target="_blank" rel="noopener">Powered by Viewertech</a>
         </div>
@@ -61,9 +61,9 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
           </select>
           <input class="form-control ems-service" placeholder="${__('Type service name')}">
           <input class="form-control ems-officer" placeholder="${__('Type officer name or email')}">
-          <button class="btn btn-default ems-mine" type="button">${ui.icon('user-check', 'sm')} ${__('Mine')}</button>
-          <button class="btn btn-default ems-urgent" type="button">${ui.icon('alert-triangle', 'sm')} ${__('Urgent')}</button>
-          <button class="btn btn-default ems-clear" type="button">${ui.icon('x', 'sm')} ${__('Clear')}</button>
+          <button class="btn btn-default ems-mine" type="button" title="${__('Show cases assigned to you')}">${ui.icon('user-check', 'sm')} ${__('Mine')}</button>
+          <button class="btn btn-default ems-urgent" type="button" title="${__('Show urgent and emergency cases')}">${ui.icon('alert-triangle', 'sm')} ${__('Urgent')}</button>
+          <button class="btn btn-default ems-clear" type="button" title="${__('Clear all filters')}">${ui.icon('x', 'sm')} ${__('Clear')}</button>
         </div>
         <div class="ems-results"></div>
       </section>
@@ -78,8 +78,8 @@ frappe.pages['officer-workbench'].on_page_load = function (wrapper) {
             <strong>${__('No matching cases')}</strong>
             <p>${__('Try a broader status, clear the filters, or create a new case.')}</p>
             <div class="ems-empty-actions">
-              <button class="btn btn-primary" type="button" data-empty-action="new-case">${ui.icon('plus', 'sm')} ${__('New Case')}</button>
-              <button class="btn btn-default" type="button" data-empty-action="clear">${ui.icon('x', 'sm')} ${__('Clear Filters')}</button>
+              <button class="btn btn-primary" type="button" data-empty-action="new-case" title="${__('Create a new consular case')}">${ui.icon('plus', 'sm')} ${__('New Case')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="clear" title="${__('Remove all active filters')}">${ui.icon('x', 'sm')} ${__('Clear Filters')}</button>
             </div>
           </div>
         </div>

@@ -29,8 +29,8 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
         </div>
         <div class="ems-command-actions">
           <div class="ems-toolbar">
-            <button class="btn btn-primary ems-refresh" type="button">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
-            <button class="btn btn-default" type="button" data-route="Embassy Appointment">${ui.icon('plus', 'sm')} ${__('New Appointment')}</button>
+            <button class="btn btn-primary ems-refresh" type="button" title="${__('Reload appointments using the current filters')}">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
+            <button class="btn btn-default" type="button" data-route="Embassy Appointment" title="${__('Create a new appointment or walk-in booking')}">${ui.icon('plus', 'sm')} ${__('New Appointment')}</button>
           </div>
           <a href="https://viewertech.net" target="_blank" rel="noopener">Powered by Viewertech</a>
         </div>
@@ -57,8 +57,8 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
           </select>
           <input class="form-control ems-service" placeholder="${__('Type service name')}">
           <input class="form-control ems-location" placeholder="${__('Type location name')}">
-          <button class="btn btn-default ems-today" type="button">${ui.icon('calendar', 'sm')} ${__('Today')}</button>
-          <button class="btn btn-default ems-clear" type="button">${ui.icon('x', 'sm')} ${__('Clear')}</button>
+          <button class="btn btn-default ems-today" type="button" title="${__('Show appointments for today')}">${ui.icon('calendar', 'sm')} ${__('Today')}</button>
+          <button class="btn btn-default ems-clear" type="button" title="${__('Clear appointment filters')}">${ui.icon('x', 'sm')} ${__('Clear')}</button>
         </div>
         <div class="ems-results"></div>
       </section>
@@ -73,9 +73,9 @@ frappe.pages['appointment-calendar'].on_page_load = function (wrapper) {
             <strong>${__('No appointments found')}</strong>
             <p>${__('Clear the filters, create appointment slots, or add a walk-in appointment.')}</p>
             <div class="ems-empty-actions">
-              <button class="btn btn-primary" type="button" data-empty-action="new-appointment">${ui.icon('plus', 'sm')} ${__('New Appointment')}</button>
-              <button class="btn btn-default" type="button" data-empty-action="slots">${ui.icon('calendar-plus', 'sm')} ${__('Appointment Slots')}</button>
-              <button class="btn btn-default" type="button" data-empty-action="clear">${ui.icon('x', 'sm')} ${__('Clear Filters')}</button>
+              <button class="btn btn-primary" type="button" data-empty-action="new-appointment" title="${__('Create a new appointment record')}">${ui.icon('plus', 'sm')} ${__('New Appointment')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="slots" title="${__('Open appointment slot setup')}">${ui.icon('calendar-plus', 'sm')} ${__('Appointment Slots')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="clear" title="${__('Remove all appointment filters')}">${ui.icon('x', 'sm')} ${__('Clear Filters')}</button>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ from frappe import _
 
 from embassy_management.embassy_management.display_titles import link_title
 from embassy_management.api.requirements import evaluate_requirements
+from embassy_management.api.stripe_payments import is_stripe_enabled
 from embassy_management.utils import get_or_create_applicant_profile
 
 
@@ -100,7 +101,12 @@ def applicant_dashboard():
         application.service_label = link_title("Consular Service", application.service, "service_name")
     for appointment in appointments:
         appointment.service_label = link_title("Consular Service", appointment.service, "service_name")
-    return {"profile": profile.as_dict(), "applications": applications, "appointments": appointments}
+    return {
+        "profile": profile.as_dict(),
+        "applications": applications,
+        "appointments": appointments,
+        "stripe_enabled": is_stripe_enabled(),
+    }
 
 
 def _create_application_requirements(application, service):

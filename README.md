@@ -134,8 +134,9 @@ Open Desk and configure:
 5. **Application Document Requirement** - define required documents per service and application.
 6. **Consular Fee Rule** - link services to ERPNext Items and currency-specific fee rules.
 7. **Appointment Slot** - define capacity, working days, public-holiday exclusions, locations, and officer assignments.
-8. **Email Template** - edit multilingual templates for applicant and officer notifications.
-9. **Workflow** - adjust state transitions per service where required.
+8. **Stripe Payments** - optional hosted card payments through Stripe Checkout; see [Stripe Integration Guide](docs/stripe-integration-guide.md).
+9. **Email Template** - edit multilingual templates for applicant and officer notifications.
+10. **Workflow** - adjust state transitions per service where required.
 
 ## Branding
 

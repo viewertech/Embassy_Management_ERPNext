@@ -25,6 +25,14 @@
     "additional_languages",
     "time_zone",
     "default_payment_mode",
+    "stripe_payments",
+    "stripe_enabled",
+    "stripe_mode",
+    "stripe_publishable_key",
+    "stripe_secret_key",
+    "stripe_webhook_secret",
+    "stripe_success_url",
+    "stripe_cancel_url",
     "default_workflow",
     "appointments",
     "appointment_working_days",
@@ -284,6 +292,48 @@
       "fieldname": "submission_confirmation_text",
       "fieldtype": "Text Editor",
       "label": "Submission Confirmation Text"
+    },
+    {
+      "fieldname": "stripe_payments",
+      "fieldtype": "Section Break",
+      "label": "Stripe Payments"
+    },
+    {
+      "fieldname": "stripe_enabled",
+      "fieldtype": "Check",
+      "label": "Enable Stripe Checkout"
+    },
+    {
+      "fieldname": "stripe_mode",
+      "fieldtype": "Select",
+      "label": "Stripe Mode",
+      "options": "Test\nLive",
+      "default": "Test"
+    },
+    {
+      "fieldname": "stripe_publishable_key",
+      "fieldtype": "Data",
+      "label": "Stripe Publishable Key"
+    },
+    {
+      "fieldname": "stripe_secret_key",
+      "fieldtype": "Password",
+      "label": "Stripe Secret Key"
+    },
+    {
+      "fieldname": "stripe_webhook_secret",
+      "fieldtype": "Password",
+      "label": "Stripe Webhook Secret"
+    },
+    {
+      "fieldname": "stripe_success_url",
+      "fieldtype": "Data",
+      "label": "Stripe Success URL"
+    },
+    {
+      "fieldname": "stripe_cancel_url",
+      "fieldtype": "Data",
+      "label": "Stripe Cancel URL"
     }
   ],
   "index_web_pages_for_search": 1,

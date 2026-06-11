@@ -26,6 +26,11 @@
     "payment_status",
     "sales_invoice",
     "payment_entry",
+    "stripe_payment_section",
+    "stripe_payment_status",
+    "stripe_checkout_session_id",
+    "stripe_payment_intent",
+    "stripe_checkout_url",
     "review",
     "assigned_officer",
     "review_status",
@@ -270,6 +275,37 @@
       "fieldname": "locked_after_submission",
       "fieldtype": "Check",
       "label": "Locked After Submission",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_payment_section",
+      "fieldtype": "Section Break",
+      "label": "Stripe Payment"
+    },
+    {
+      "fieldname": "stripe_payment_status",
+      "fieldtype": "Select",
+      "label": "Stripe Payment Status",
+      "options": "Not Started\nPending\nPaid\nExpired\nFailed",
+      "default": "Not Started",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_checkout_session_id",
+      "fieldtype": "Data",
+      "label": "Stripe Checkout Session ID",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_payment_intent",
+      "fieldtype": "Data",
+      "label": "Stripe Payment Intent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "stripe_checkout_url",
+      "fieldtype": "Small Text",
+      "label": "Stripe Checkout URL",
       "read_only": 1
     }
   ],

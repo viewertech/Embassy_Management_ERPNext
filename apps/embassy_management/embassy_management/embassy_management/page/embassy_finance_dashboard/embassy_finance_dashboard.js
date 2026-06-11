@@ -29,9 +29,9 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
         </div>
         <div class="ems-command-actions">
           <div class="ems-toolbar">
-            <button class="btn btn-primary ems-refresh" type="button">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
-            <button class="btn btn-default" type="button" data-route="Consular Payment Review">${ui.icon('list', 'sm')} ${__('Payment Reviews')}</button>
-            <button class="btn btn-default" type="button" data-route="Consular Fee Rule">${ui.icon('credit-card', 'sm')} ${__('Fee Rules')}</button>
+            <button class="btn btn-primary ems-refresh" type="button" title="${__('Reload finance metrics and reviews')}">${ui.icon('refresh-cw', 'sm')} ${__('Refresh')}</button>
+            <button class="btn btn-default" type="button" data-route="Consular Payment Review" title="${__('Open all consular payment reviews')}">${ui.icon('list', 'sm')} ${__('Payment Reviews')}</button>
+            <button class="btn btn-default" type="button" data-route="Consular Fee Rule" title="${__('Configure service fees and fee rules')}">${ui.icon('credit-card', 'sm')} ${__('Fee Rules')}</button>
           </div>
           <a href="https://viewertech.net" target="_blank" rel="noopener">Powered by Viewertech</a>
         </div>
@@ -48,8 +48,8 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
             <strong>${__('No payment reviews found')}</strong>
             <p>${__('Clear the status filter or create a manual payment review.')}</p>
             <div class="ems-empty-actions">
-              <button class="btn btn-primary" type="button" data-empty-action="new-review">${ui.icon('plus', 'sm')} ${__('New Review')}</button>
-              <button class="btn btn-default" type="button" data-empty-action="clear">${ui.icon('x', 'sm')} ${__('Clear Filter')}</button>
+              <button class="btn btn-primary" type="button" data-empty-action="new-review" title="${__('Create a manual payment review')}">${ui.icon('plus', 'sm')} ${__('New Review')}</button>
+              <button class="btn btn-default" type="button" data-empty-action="clear" title="${__('Remove the selected review status')}">${ui.icon('x', 'sm')} ${__('Clear Filter')}</button>
             </div>
           </div>
         </div>
@@ -107,8 +107,8 @@ frappe.pages['embassy-finance-dashboard'].on_page_load = function (wrapper) {
                   <option>Rejected</option>
                   <option>Refunded</option>
                 </select>
-                <button class="btn btn-default" type="button" data-route="Sales Invoice">${ui.icon('file-text', 'sm')} ${__('Invoices')}</button>
-                <button class="btn btn-default" type="button" data-route="Payment Entry">${ui.icon('banknote', 'sm')} ${__('Payments')}</button>
+                <button class="btn btn-default" type="button" data-route="Sales Invoice" title="${__('Open ERPNext sales invoices')}">${ui.icon('file-text', 'sm')} ${__('Invoices')}</button>
+                <button class="btn btn-default" type="button" data-route="Payment Entry" title="${__('Open ERPNext payment entries')}">${ui.icon('banknote', 'sm')} ${__('Payments')}</button>
               </div>
             </div>
             ${renderReviews(rows)}

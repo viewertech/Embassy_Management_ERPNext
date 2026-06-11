@@ -149,10 +149,19 @@ function renderDashboard(appRoot) {
       const data = response.message || {};
       const applications = data.applications || [];
       const appointments = data.appointments || [];
+      const stripeEnabled = Boolean(data.stripe_enabled);
+      const canPayWithStripe = (app) => {
+        const inactiveStatuses = ['Draft', 'Rejected', 'Cancelled', 'Completed', 'Collected / Dispatched'];
+        const closedPaymentStatuses = ['Not Required', 'Payment Confirmed', 'Refunded'];
+        return stripeEnabled
+          && Number(app.total_fee || 0) > 0
+          && !inactiveStatuses.includes(app.application_status)
+          && !closedPaymentStatuses.includes(app.payment_status);
+      };
       appRoot.innerHTML = `
         <div class="ems-portal-actions">
-          <a class="btn btn-primary" href="/embassy/apply">${__('Start Application')}</a>
-          <a class="btn btn-outline-primary" href="/embassy/requirements">${__('Check Requirements')}</a>
+          <a class="btn btn-primary" href="/embassy/apply" title="${__('Start a new online consular application')}">${__('Start Application')}</a>
+          <a class="btn btn-outline-primary" href="/embassy/requirements" title="${__('Check service eligibility, fees, and document requirements')}">${__('Check Requirements')}</a>
         </div>
         <div class="ems-panel-grid">
           <article class="ems-card">
@@ -175,6 +184,11 @@ function renderDashboard(appRoot) {
                   <strong>${emsEscape(app.application_number || app.name)}</strong>
                   <p>${emsEscape(app.service_label || app.service || '')} - ${emsEscape(app.application_status || '')}</p>
                   <span class="ems-chip">${emsEscape(app.payment_status || __('Payment status not set'))}</span>
+                  ${canPayWithStripe(app) ? `
+                    <div class="ems-actions">
+                      <button class="btn btn-primary btn-sm" type="button" data-stripe-pay="${emsEscape(app.name)}" title="${__('Pay securely using Stripe Checkout')}">${__('Pay with Stripe')}</button>
+                    </div>
+                  ` : ''}
                 </div>
               `).join('') : `
                 <div class="ems-empty">
@@ -202,6 +216,27 @@ function renderDashboard(appRoot) {
           </article>
         </div>
       `;
+      appRoot.querySelectorAll('[data-stripe-pay]').forEach(button => {
+        button.addEventListener('click', function () {
+          const application = this.getAttribute('data-stripe-pay');
+          this.disabled = true;
+          this.textContent = __('Opening Stripe...');
+          frappe.call({
+            method: 'embassy_management.api.stripe_payments.create_checkout_session',
+            args: { application },
+            callback: function (payResponse) {
+              const payload = payResponse.message || {};
+              if (payload.checkout_url) {
+                window.location.href = payload.checkout_url;
+              }
+            },
+            error: () => {
+              this.disabled = false;
+              this.textContent = __('Pay with Stripe');
+            }
+          });
+        });
+      });
     },
     error: function () {
       appRoot.innerHTML = `<div class="ems-empty">${__('Please log in to view the applicant dashboard.')}</div>`;

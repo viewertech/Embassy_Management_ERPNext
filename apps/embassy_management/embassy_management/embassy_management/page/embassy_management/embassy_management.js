@@ -124,8 +124,8 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
             <span class="ems-pill">${ui.icon('lock', 'sm')} ${__('Role-based')}</span>
           </div>
           <div class="ems-toolbar">
-            <button class="btn btn-primary" type="button" data-action="portal">${ui.icon('external-link', 'sm')} ${__('Open Portal')}</button>
-            <button class="btn btn-default" type="button" data-action="settings">${ui.icon('settings', 'sm')} ${__('Embassy Settings')}</button>
+            <button class="btn btn-primary" type="button" data-action="portal" title="${__('Open the public applicant portal in a new tab')}">${ui.icon('external-link', 'sm')} ${__('Open Portal')}</button>
+            <button class="btn btn-default" type="button" data-action="settings" title="${__('Configure mission identity, branding, contacts, language, and payment defaults')}">${ui.icon('settings', 'sm')} ${__('Embassy Settings')}</button>
           </div>
           <a href="https://viewertech.net" target="_blank" rel="noopener">Powered by Viewertech</a>
         </div>
@@ -149,7 +149,7 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
         </div>
         <div class="ems-task-strip">
           ${taskFlow.map((task, index) => `
-            <button class="ems-task-button" type="button" data-task-index="${index}">
+            <button class="ems-task-button" type="button" data-task-index="${index}" title="${ui.escape(task.meta)}">
               <span class="ems-task-number">${index + 1}</span>
               <span class="ems-card-icon">${ui.icon(task.icon, 'sm')}</span>
               <span>
@@ -163,7 +163,7 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
 
       <section class="ems-action-grid">
         ${cards.map((card, index) => `
-          <button class="ems-action-card" type="button" data-index="${index}">
+          <button class="ems-action-card" type="button" data-index="${index}" title="${ui.escape(card.description)}">
             <span class="ems-card-head">
               <span class="ems-card-icon">${ui.icon(card.icon, 'md')}</span>
               <strong>${ui.escape(card.label)}</strong>
@@ -188,7 +188,7 @@ frappe.pages['embassy-management'].on_page_load = function (wrapper) {
             ['Consular Fee Rule', 'credit-card', __('Nationality, visa type, processing type, entry type, and waiver rules.')],
             ['Appointment Slot', 'calendar', __('Capacity, locations, officers, working days, and public holiday control.')]
           ].map((item) => `
-            <button class="ems-action-card" type="button" data-doctype="${ui.escape(item[0])}">
+            <button class="ems-action-card" type="button" data-doctype="${ui.escape(item[0])}" title="${ui.escape(item[2])}">
               <span class="ems-card-head">
                 <span class="ems-card-icon">${ui.icon(item[1], 'md')}</span>
                 <strong>${ui.escape(__(item[0]))}</strong>
