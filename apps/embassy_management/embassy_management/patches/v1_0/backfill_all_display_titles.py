@@ -6,6 +6,7 @@ from embassy_management.embassy_management.display_titles import (
     build_payment_review_title,
     build_service_details_title,
     link_title,
+    truncate_title,
 )
 
 
@@ -111,4 +112,4 @@ def _backfill(doctype, title_field, builder, fields):
     for row in frappe.get_all(doctype, fields=["name", *fields]):
         title = builder(row)
         if title:
-            frappe.db.set_value(doctype, row.name, title_field, title, update_modified=False)
+            frappe.db.set_value(doctype, row.name, title_field, truncate_title(title), update_modified=False)

@@ -5,6 +5,9 @@ from decimal import Decimal, InvalidOperation
 import frappe
 
 
+MAX_DATA_TITLE_LENGTH = 140
+
+
 def get_field(doc, fieldname):
     if isinstance(doc, dict):
         return doc.get(fieldname)
@@ -18,7 +21,16 @@ def clean(value):
 
 
 def join_title(parts):
-    return " | ".join(part for part in (clean(part) for part in parts) if part)
+    return truncate_title(" | ".join(part for part in (clean(part) for part in parts) if part))
+
+
+def truncate_title(value, max_length=MAX_DATA_TITLE_LENGTH):
+    value = clean(value)
+    if not value or len(value) <= max_length:
+        return value
+    if max_length <= 3:
+        return value[:max_length]
+    return value[: max_length - 3].rstrip() + "..."
 
 
 def link_title(doctype, name, title_field=None):

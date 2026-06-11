@@ -1,6 +1,8 @@
 import frappe
 from frappe.model.document import Document
 
+from embassy_management.embassy_management.display_titles import truncate_title
+
 
 def _field(doc, fieldname):
     if isinstance(doc, dict):
@@ -41,7 +43,7 @@ def build_slot_label(doc):
         if part
     )
     parts = [service or appointment_type or "Appointment Slot", location, str(date) if date else None, time_range]
-    return " | ".join(part for part in parts if part)
+    return truncate_title(" | ".join(part for part in parts if part))
 
 
 class AppointmentSlot(Document):

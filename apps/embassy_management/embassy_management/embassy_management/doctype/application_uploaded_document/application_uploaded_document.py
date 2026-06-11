@@ -1,6 +1,8 @@
 import frappe
 from frappe.model.document import Document
 
+from embassy_management.embassy_management.display_titles import truncate_title
+
 
 def _field(doc, fieldname):
     if isinstance(doc, dict):
@@ -41,7 +43,7 @@ def build_document_title(doc):
         )
 
     label = requirement_label or category or "Uploaded Document"
-    return " | ".join(part for part in [label, application_label, applicant_name, status] if part)
+    return truncate_title(" | ".join(part for part in [label, application_label, applicant_name, status] if part))
 
 
 class ApplicationUploadedDocument(Document):
